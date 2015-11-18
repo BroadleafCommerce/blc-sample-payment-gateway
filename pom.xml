@@ -14,7 +14,7 @@
     <version>1.0.0-SNAPSHOT</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <blc.version>4.1.0-SNAPSHOT</blc.version>
+        <blc.version>4.1.0-ADMIN-UX-SNAPSHOT</blc.version>
         <project.uri>${user.dir}</project.uri>
     </properties>
     <scm>
@@ -34,27 +34,12 @@
     </licenses>
     <developers>
         <developer>
-            <id>jeff</id>
-            <name>Jeff Fischer</name>
-            <email>jfischer@broadleafcommerce.org</email>
+            <id>bhines</id>
+            <name>Brandon Hines</name>
+            <email>bhines@broadleafcommerce.org</email>
             <organization>Broadleaf Commerce</organization>
             <organizationUrl>http://www.broadleafcommerce.org</organizationUrl>
             <roles>
-                <role>cto</role>
-                <role>architect</role>
-                <role>developer</role>
-            </roles>
-            <timezone>-6</timezone>
-        </developer>
-        <developer>
-            <id>brian</id>
-            <name>Brian Polster</name>
-            <email>bpolster@broadleafcommerce.org</email>
-            <organization>Broadleaf Commerce</organization>
-            <organizationUrl>http://www.broadleafcommerce.org</organizationUrl>
-            <roles>
-                <role>president</role>
-                <role>architect</role>
                 <role>developer</role>
             </roles>
             <timezone>-6</timezone>
@@ -277,5 +262,14 @@
             <scope>compile</scope>
         </dependency>
 
+
+        <!-- Other -->
+        <dependency>
+                <groupId>joda-time</groupId>
+                <artifactId>joda-time</artifactId>
+                <version>2.1</version>
+                <type>jar</type>
+                <scope>compile</scope>
+        </dependency>
     </dependencies>
 </project>
