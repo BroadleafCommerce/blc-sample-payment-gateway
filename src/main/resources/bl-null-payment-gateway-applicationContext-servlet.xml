@@ -32,33 +32,5 @@
            http://schema.broadleafcommerce.org/mo/mo-3.0.xsd">
            
     <context:component-scan base-package="org.broadleafcommerce.payment.service.gateway"/>
-    
-    <bean id="blNullPaymentGatewayHostedActionProcessor" class="org.broadleafcommerce.vendor.nullPaymentGateway.web.processor.NullPaymentGatewayHostedActionProcessor"/>
-    <bean id="blNullPaymentGatewayTRExtensionHandler" class="org.broadleafcommerce.vendor.nullPaymentGateway.web.processor.NullPaymentGatewayTRExtensionHandler"/>
-    <bean id="blNullPaymentGatewayFieldExtensionHandler" class="org.broadleafcommerce.vendor.nullPaymentGateway.web.expression.NullPaymentGatewayFieldExtensionHandler"/>
-    
-    <bean id="blNullPaymentProcessors" class="org.springframework.beans.factory.config.SetFactoryBean">
-        <property name="sourceSet">
-            <set>
-                <ref bean="blNullPaymentGatewayHostedActionProcessor"/>
-            </set>
-        </property>
-    </bean>
-    <bean class="org.broadleafcommerce.common.extensibility.context.merge.LateStageMergeBeanPostProcessor">
-        <property name="collectionRef" value="blNullPaymentProcessors"/>
-        <property name="targetRef" value="blDialectProcessors"/>
-    </bean>
-
-    <bean id="blNullPaymentGatewayConfigurationServices" class="org.springframework.beans.factory.config.ListFactoryBean">
-        <property name="sourceList">
-            <list>
-                <ref bean="blNullPaymentGatewayConfigurationService"/>
-                <ref bean="blNullPaymentGatewayHostedConfigurationService"/>
-            </list>
-        </property>
-    </bean>
-    <bean class="org.broadleafcommerce.common.extensibility.context.merge.LateStageMergeBeanPostProcessor">
-        <property name="collectionRef" value="blNullPaymentGatewayConfigurationServices"/>
-        <property name="targetRef" value="blPaymentGatewayConfigurationServices"/>
-    </bean>
+    <context:component-scan base-package="org.broadleafcommerce.vendor.nullPaymentGateway"/>
 </beans>
