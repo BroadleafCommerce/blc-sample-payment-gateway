@@ -49,6 +49,16 @@ public class NullPaymentGatewayConfigurationImpl implements NullPaymentGatewayCo
     public String getTransparentRedirectReturnUrl() {
         return "/null-checkout/return";
     }
+    
+    @Override
+    public String getCustomerPaymentTransparentRedirectUrl() {
+        return "/null-customer-payment/process";
+    }
+    
+    @Override
+    public String getCustomerPaymentTransparentRedirectReturnUrl() {
+        return "/null-customer-payment/return";
+    }
 
     @Override
     public boolean isPerformAuthorizeAndCapture() {

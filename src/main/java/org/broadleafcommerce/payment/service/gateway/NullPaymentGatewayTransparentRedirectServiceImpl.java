@@ -76,9 +76,20 @@ public class NullPaymentGatewayTransparentRedirectServiceImpl implements Payment
         PaymentResponseDTO responseDTO = new PaymentResponseDTO(PaymentType.CREDIT_CARD,
                 NullPaymentGatewayType.NULL_GATEWAY)
                 .responseMap(NullPaymentGatewayConstants.ORDER_ID, requestDTO.getOrderId())
-                .responseMap(NullPaymentGatewayConstants.TRANSACTION_AMT, requestDTO.getTransactionTotal())
-                .responseMap(NullPaymentGatewayConstants.TRANSPARENT_REDIRECT_URL,
-                        configuration.getTransparentRedirectUrl());
+                .responseMap(NullPaymentGatewayConstants.TRANSACTION_AMT, requestDTO.getTransactionTotal());
+        
+        if (requestDTO.getCustomer() != null){
+            responseDTO.responseMap(NullPaymentGatewayConstants.CUSTOMER_ID, requestDTO.getCustomer().getCustomerId());
+        }
+        
+        if (requestDTO.getAdditionalFields().containsKey("TOKENIZE_REQUEST")){
+            responseDTO.responseMap(NullPaymentGatewayConstants.TRANSPARENT_REDIRECT_URL,
+                    configuration.getCustomerPaymentTransparentRedirectUrl());
+        }
+        else{
+            responseDTO.responseMap(NullPaymentGatewayConstants.TRANSPARENT_REDIRECT_URL,
+                    configuration.getTransparentRedirectUrl());
+        }
 
         AddressDTO billTo = requestDTO.getBillTo();
         if (billTo != null)  {

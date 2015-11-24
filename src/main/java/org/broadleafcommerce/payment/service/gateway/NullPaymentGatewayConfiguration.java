@@ -30,5 +30,9 @@ public interface NullPaymentGatewayConfiguration extends PaymentGatewayConfigura
     public String getTransparentRedirectUrl();
 
     public String getTransparentRedirectReturnUrl();
+    
+    public String getCustomerPaymentTransparentRedirectUrl();
+    
+    public String getCustomerPaymentTransparentRedirectReturnUrl();
 
 }

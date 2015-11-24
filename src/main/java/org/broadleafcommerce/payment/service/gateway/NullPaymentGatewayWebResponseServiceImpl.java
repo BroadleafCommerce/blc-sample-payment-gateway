@@ -22,6 +22,7 @@ package org.broadleafcommerce.payment.service.gateway;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.broadleafcommerce.common.money.Money;
+import org.broadleafcommerce.common.payment.PaymentAdditionalFieldType;
 import org.broadleafcommerce.common.payment.PaymentTransactionType;
 import org.broadleafcommerce.common.payment.PaymentType;
 import org.broadleafcommerce.common.payment.dto.PaymentResponseDTO;
@@ -92,6 +93,7 @@ public class NullPaymentGatewayWebResponseServiceImpl implements PaymentGatewayW
                 .amount(amount)
                 .paymentTransactionType(type)
                 .orderId(paramMap.get(NullPaymentGatewayConstants.ORDER_ID)[0])
+                .customer().customerId(paramMap.get(NullPaymentGatewayConstants.CUSTOMER_ID)[0]).done()
                 .responseMap(NullPaymentGatewayConstants.GATEWAY_TRANSACTION_ID,
                         paramMap.get(NullPaymentGatewayConstants.GATEWAY_TRANSACTION_ID)[0])
                 .responseMap(NullPaymentGatewayConstants.RESULT_MESSAGE,
@@ -112,6 +114,20 @@ public class NullPaymentGatewayWebResponseServiceImpl implements PaymentGatewayW
                     .creditCardType(paramMap.get(NullPaymentGatewayConstants.CREDIT_CARD_TYPE)[0])
                     .creditCardExpDate(paramMap.get(NullPaymentGatewayConstants.CREDIT_CARD_EXP_DATE)[0])
                     .done();
+        
+        //additional fields
+        if (paramMap.containsKey(NullPaymentGatewayConstants.PAYMENT_TOKEN_ID)) {
+            responseDTO.responseMap(PaymentAdditionalFieldType.TOKEN.getType(),
+                        paramMap.get(NullPaymentGatewayConstants.PAYMENT_TOKEN_ID)[0]);
+        }
+        responseDTO.responseMap(PaymentAdditionalFieldType.LAST_FOUR.getType(),
+                         paramMap.get(NullPaymentGatewayConstants.CREDIT_CARD_LAST_FOUR)[0])
+                   .responseMap(PaymentAdditionalFieldType.CARD_TYPE.getType(),
+                         paramMap.get(NullPaymentGatewayConstants.CREDIT_CARD_TYPE)[0])
+                   .responseMap(PaymentAdditionalFieldType.NAME_ON_CARD.getType(),
+                         paramMap.get(NullPaymentGatewayConstants.CREDIT_CARD_NAME)[0])
+                   .responseMap(PaymentAdditionalFieldType.EXP_DATE.getType(),
+                         paramMap.get(NullPaymentGatewayConstants.CREDIT_CARD_EXP_DATE)[0]);
 
         return responseDTO;
 

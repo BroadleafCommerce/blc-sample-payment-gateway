@@ -101,10 +101,21 @@ public class NullPaymentGatewayTRExtensionHandler extends AbstractTRCreditCardEx
         formParameters.put(getFormActionURLKey(), actionValue);
 
         Map<String, String> hiddenFields = new HashMap<String, String>();
-        hiddenFields.put(NullPaymentGatewayConstants.TRANSACTION_AMT,
-                responseDTO.getResponseMap().get(NullPaymentGatewayConstants.TRANSACTION_AMT).toString());
-        hiddenFields.put(NullPaymentGatewayConstants.ORDER_ID,
-                responseDTO.getResponseMap().get(NullPaymentGatewayConstants.ORDER_ID).toString());
+        
+        if (responseDTO.getResponseMap().get(NullPaymentGatewayConstants.TRANSACTION_AMT) != null) {
+            hiddenFields.put(NullPaymentGatewayConstants.TRANSACTION_AMT,
+                    responseDTO.getResponseMap().get(NullPaymentGatewayConstants.TRANSACTION_AMT).toString());
+        }
+        
+        if (responseDTO.getResponseMap().get(NullPaymentGatewayConstants.ORDER_ID) != null) {
+            hiddenFields.put(NullPaymentGatewayConstants.ORDER_ID,
+                    responseDTO.getResponseMap().get(NullPaymentGatewayConstants.ORDER_ID).toString());
+        }
+        
+        if (responseDTO.getResponseMap().get(NullPaymentGatewayConstants.CUSTOMER_ID) != null) {
+            hiddenFields.put(NullPaymentGatewayConstants.CUSTOMER_ID,
+                    responseDTO.getResponseMap().get(NullPaymentGatewayConstants.CUSTOMER_ID).toString());
+        }
 
         if (responseDTO.getResponseMap().get(NullPaymentGatewayConstants.BILLING_FIRST_NAME) != null) {
             hiddenFields.put(NullPaymentGatewayConstants.BILLING_FIRST_NAME,

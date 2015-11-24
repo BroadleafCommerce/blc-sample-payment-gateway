@@ -33,6 +33,7 @@ public class NullPaymentGatewayConstants {
 
     public static final String TRANSACTION_AMT = "TRANSACTION_AMT";
     public static final String ORDER_ID = "ORDER_ID";
+    public static final String CUSTOMER_ID = "CUSTOMER_ID";
     public static final String GATEWAY_TRANSACTION_ID = "GATEWAY_TRANSACTION_ID";
 
     public static final String BILLING_FIRST_NAME = "NULL_BILLING_FIRST_NAME";
@@ -60,5 +61,6 @@ public class NullPaymentGatewayConstants {
     public static final String CREDIT_CARD_LAST_FOUR = "CREDIT_CARD_LAST_FOUR";
     public static final String CREDIT_CARD_TYPE = "CREDIT_CARD_TYPE";
 
+    public static final String PAYMENT_TOKEN_ID = "PAYMENT_TOKEN_ID";
 
 }

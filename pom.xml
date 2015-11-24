@@ -13,7 +13,7 @@
     <version>1.0.0-SNAPSHOT</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <blc.version>4.0.6-GA</blc.version>
+        <blc.version>4.1.0-SNAPSHOT</blc.version>
         <project.uri>${user.dir}</project.uri>
     </properties>
     <scm>
@@ -138,8 +138,8 @@
                         <exclude>**/*responsive-tables*</exclude>
                         <exclude>**/spectrum.css</exclude>
                         <exclude>**/spectrum.js</exclude>
-                        <exclude>**/redactor.js</exclude>   
-                        <exclude>**/sitemap/**/*.xml</exclude>                       
+                        <exclude>**/redactor.js</exclude>
+                        <exclude>**/sitemap/**/*.xml</exclude>
                     </excludes>
                 </configuration>
                 <executions>
