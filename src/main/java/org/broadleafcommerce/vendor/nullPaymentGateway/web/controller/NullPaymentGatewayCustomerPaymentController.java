@@ -68,16 +68,6 @@ public class NullPaymentGatewayCustomerPaymentController extends CustomerPayment
         return paymentGatewayConfiguration;
     }
 
-
-    //!!!!!!!!REMOVE THIS!!!!!!!!!!!
-    //!!!!!!!!FOR TESTING ONLY!!!!!!
-    @Override
-    public String getCustomerPaymentViewRedirect(String customerPaymentId) {
-        return "redirect:/oms-csrtools/checkout";
-    }
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-
     @Override
     public void handleProcessingException(Exception e, RedirectAttributes redirectAttributes) throws PaymentException {
         if (LOG.isTraceEnabled()) {
