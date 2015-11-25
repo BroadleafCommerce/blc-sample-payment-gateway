@@ -10,7 +10,7 @@
     <artifactId>broadleaf-null-payment-gateway</artifactId>
     <name>BroadleafCommerce Null Payment Gateway</name>
     <description>BroadleafCommerce Null Payment Gateway</description>
-    <version>1.0.0-GA</version>
+    <version>1.0.0-SNAPSHOT</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <blc.version>4.0.6-GA</blc.version>
