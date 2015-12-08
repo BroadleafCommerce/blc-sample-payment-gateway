@@ -17,7 +17,7 @@
  * limitations under the License.
  * #L%
  */
-package org.broadleafcommerce.vendor.nullPaymentGateway.web.controller;
+package org.broadleafcommerce.vendor.nullPaymentGateway.web.controller.mock.processor;
 
 import java.util.Map;
 import java.util.UUID;
@@ -35,8 +35,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-@Controller("blNullPaymentGatewayCustomerPaymentProcessorController")
-public class NullPaymentGatewayCustomerPaymentProcessorController {
+@Controller("blNullMockCustomerPaymentProcessorController")
+public class NullMockCustomerPaymentProcessorController {
 
     @Resource(name = "blNullPaymentGatewayConfiguration")
     protected NullPaymentGatewayConfiguration paymentGatewayConfiguration;
