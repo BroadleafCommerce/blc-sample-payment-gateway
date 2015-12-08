@@ -17,7 +17,7 @@
  * limitations under the License.
  * #L%
  */
-package org.broadleafcommerce.vendor.nullPaymentGateway.web.controller;
+package org.broadleafcommerce.vendor.nullPaymentGateway.web.controller.mock.processor;
 
 import org.broadleafcommerce.payment.service.gateway.NullPaymentGatewayHostedConfiguration;
 import org.broadleafcommerce.vendor.nullPaymentGateway.service.payment.NullPaymentGatewayConstants;
@@ -35,15 +35,15 @@ import java.util.Map;
  * This mimics the flow of a real hosted service like PayPal Express Checkout.
  *
  * In order to use this sample controller, you will need to component scan
- * the package "com.broadleafcommerce".
+ * the package "org.broadleafcommerce".
  *
  * This should NOT be used in production, and is meant solely for demonstration
  * purposes only.
  *
  * @author Elbert Bautista (elbertbautista)
  */
-@Controller("blNullPaymentGatewayHostedProcessorController")
-public class NullPaymentGatewayHostedProcessorController {
+@Controller("blNullMockHostedProcessorController")
+public class NullMockHostedProcessorController {
 
     @Resource(name = "blNullPaymentGatewayHostedConfiguration")
     protected NullPaymentGatewayHostedConfiguration paymentGatewayConfiguration;

@@ -39,7 +39,7 @@ import java.util.Map;
 /**
  * This is an example implementation of a {@link PaymentGatewayWebResponseService}.
  * This will translate the Post information back from
- * {@link org.broadleafcommerce.vendor.nullPaymentGateway.web.controller.NullPaymentGatewayProcessorController}
+ * {@link org.broadleafcommerce.vendor.nullPaymentGateway.web.controller.mock.processor.NullMockProcessorController}
  * into a PaymentResponseDTO for processing in the Broadleaf System.
  *
  * Replace with a real Payment Gateway Integration like Braintree or PayPal PayFlow.

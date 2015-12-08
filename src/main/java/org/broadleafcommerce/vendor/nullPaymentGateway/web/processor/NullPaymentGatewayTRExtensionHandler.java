@@ -37,7 +37,7 @@ import javax.annotation.Resource;
 /**
  * This sample handler will add itself to the {@link TRCreditCardExtensionManager}
  * and will add some default hidden parameters/form POST URL for our fake
- * {@link org.broadleafcommerce.vendor.nullPaymentGateway.web.controller.NullPaymentGatewayProcessorController}
+ * {@link org.broadleafcommerce.vendor.nullPaymentGateway.web.controller.mock.processor.NullMockProcessorController}
  *
  * Note, we don't want this loaded into the extension manager
  * if a real payment gateway is used, so make sure to not scan this class when
