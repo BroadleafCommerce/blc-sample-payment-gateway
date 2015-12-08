@@ -18,7 +18,7 @@
  * #L%
  */
 
-package org.broadleafcommerce.vendor.nullPaymentGateway.web.controller;
+package org.broadleafcommerce.vendor.nullPaymentGateway.web.controller.mock.processor;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.validator.CreditCardValidator;
@@ -44,15 +44,15 @@ import java.util.UUID;
  * In production, that form should securely POST to your third party payment gateway and not this controller.
  *
  * In order to use this sample controller, you will need to component scan
- * the package "com.broadleafcommerce".
+ * the package "org.broadleafcommerce".
  *
  * This should NOT be used in production, and is meant solely for demonstration
  * purposes only.
  *
  * @author Elbert Bautista (elbertbautista)
  */
-@Controller("blNullPaymentGatewayProcessorController")
-public class NullPaymentGatewayProcessorController {
+@Controller("blNullMockProcessorController")
+public class NullMockProcessorController {
 
     @Resource(name = "blNullPaymentGatewayConfiguration")
     protected NullPaymentGatewayConfiguration paymentGatewayConfiguration;

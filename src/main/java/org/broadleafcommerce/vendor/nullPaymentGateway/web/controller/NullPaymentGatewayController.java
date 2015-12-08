@@ -46,7 +46,7 @@ import javax.servlet.http.HttpServletRequest;
  * so that it can be processed in the system.
  *
  * In order to use this sample controller, you will need to component scan
- * the package "com.broadleafcommerce".
+ * the package "org.broadleafcommerce".
  *
  * This should NOT be used in production, and is meant solely for demonstration
  * purposes only.
