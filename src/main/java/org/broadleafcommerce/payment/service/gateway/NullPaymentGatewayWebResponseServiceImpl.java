@@ -92,52 +92,51 @@ public class NullPaymentGatewayWebResponseServiceImpl implements PaymentGatewayW
         responseDTO.successful(approved)
                 .amount(amount)
                 .paymentTransactionType(type)
+                .orderId(parse(paramMap, NullPaymentGatewayConstants.ORDER_ID))
+                .customer()
+                    .customerId(parse(paramMap, NullPaymentGatewayConstants.CUSTOMER_ID))
+                    .done()
                 .responseMap(NullPaymentGatewayConstants.GATEWAY_TRANSACTION_ID,
-                        paramMap.get(NullPaymentGatewayConstants.GATEWAY_TRANSACTION_ID)[0])
+                        parse(paramMap, NullPaymentGatewayConstants.GATEWAY_TRANSACTION_ID))
                 .responseMap(NullPaymentGatewayConstants.RESULT_MESSAGE,
-                        paramMap.get(NullPaymentGatewayConstants.RESULT_MESSAGE)[0])
+                        parse(paramMap, NullPaymentGatewayConstants.RESULT_MESSAGE))
+                .responseMap(PaymentAdditionalFieldType.TOKEN.getType(),
+                        parse(paramMap, NullPaymentGatewayConstants.PAYMENT_TOKEN_ID))
+                .responseMap(PaymentAdditionalFieldType.LAST_FOUR.getType(),
+                        parse(paramMap, NullPaymentGatewayConstants.CREDIT_CARD_LAST_FOUR))
+                .responseMap(PaymentAdditionalFieldType.CARD_TYPE.getType(),
+                        parse(paramMap, NullPaymentGatewayConstants.CREDIT_CARD_TYPE))
+                .responseMap(PaymentAdditionalFieldType.NAME_ON_CARD.getType(),
+                        parse(paramMap, NullPaymentGatewayConstants.CREDIT_CARD_NAME))
+                .responseMap(PaymentAdditionalFieldType.EXP_DATE.getType(),
+                        parse(paramMap, NullPaymentGatewayConstants.CREDIT_CARD_EXP_DATE))
                 .billTo()
-                    .addressFirstName(paramMap.get(NullPaymentGatewayConstants.BILLING_FIRST_NAME)[0])
-                    .addressLastName(paramMap.get(NullPaymentGatewayConstants.BILLING_LAST_NAME)[0])
-                    .addressLine1(paramMap.get(NullPaymentGatewayConstants.BILLING_ADDRESS_LINE1)[0])
-                    .addressLine2(paramMap.get(NullPaymentGatewayConstants.BILLING_ADDRESS_LINE2)[0])
-                    .addressCityLocality(paramMap.get(NullPaymentGatewayConstants.BILLING_CITY)[0])
-                    .addressStateRegion(paramMap.get(NullPaymentGatewayConstants.BILLING_STATE)[0])
-                    .addressPostalCode(paramMap.get(NullPaymentGatewayConstants.BILLING_ZIP)[0])
-                    .addressCountryCode(paramMap.get(NullPaymentGatewayConstants.BILLING_COUNTRY)[0])
+                    .addressFirstName(parse(paramMap, NullPaymentGatewayConstants.BILLING_FIRST_NAME))
+                    .addressLastName(parse(paramMap, NullPaymentGatewayConstants.BILLING_LAST_NAME))
+                    .addressLine1(parse(paramMap, NullPaymentGatewayConstants.BILLING_ADDRESS_LINE1))
+                    .addressLine2(parse(paramMap, NullPaymentGatewayConstants.BILLING_ADDRESS_LINE2))
+                    .addressCityLocality(parse(paramMap, NullPaymentGatewayConstants.BILLING_CITY))
+                    .addressStateRegion(parse(paramMap, NullPaymentGatewayConstants.BILLING_STATE))
+                    .addressPostalCode(parse(paramMap, NullPaymentGatewayConstants.BILLING_ZIP))
+                    .addressCountryCode(parse(paramMap, NullPaymentGatewayConstants.BILLING_COUNTRY))
                     .done()
                 .creditCard()
-                    .creditCardHolderName(paramMap.get(NullPaymentGatewayConstants.CREDIT_CARD_NAME)[0])
-                    .creditCardLastFour(paramMap.get(NullPaymentGatewayConstants.CREDIT_CARD_LAST_FOUR)[0])
-                    .creditCardType(paramMap.get(NullPaymentGatewayConstants.CREDIT_CARD_TYPE)[0])
-                    .creditCardExpDate(paramMap.get(NullPaymentGatewayConstants.CREDIT_CARD_EXP_DATE)[0])
+                    .creditCardHolderName(parse(paramMap, NullPaymentGatewayConstants.CREDIT_CARD_NAME))
+                    .creditCardLastFour(parse(paramMap, NullPaymentGatewayConstants.CREDIT_CARD_LAST_FOUR))
+                    .creditCardType(parse(paramMap, NullPaymentGatewayConstants.CREDIT_CARD_TYPE))
+                    .creditCardExpDate(parse(paramMap, NullPaymentGatewayConstants.CREDIT_CARD_EXP_DATE))
                     .done();
-
-        if (paramMap.containsKey(NullPaymentGatewayConstants.ORDER_ID)) {
-            responseDTO.orderId(paramMap.get(NullPaymentGatewayConstants.ORDER_ID)[0]);
-        }
-
-        if (paramMap.containsKey(NullPaymentGatewayConstants.CUSTOMER_ID)) {
-            responseDTO.customer().customerId(paramMap.get(NullPaymentGatewayConstants.CUSTOMER_ID)[0]);
-        }
-        
-        //additional fields
-        if (paramMap.containsKey(NullPaymentGatewayConstants.PAYMENT_TOKEN_ID)) {
-            responseDTO.responseMap(PaymentAdditionalFieldType.TOKEN.getType(),
-                        paramMap.get(NullPaymentGatewayConstants.PAYMENT_TOKEN_ID)[0]);
-        }
-
-        responseDTO.responseMap(PaymentAdditionalFieldType.LAST_FOUR.getType(),
-                         paramMap.get(NullPaymentGatewayConstants.CREDIT_CARD_LAST_FOUR)[0])
-                   .responseMap(PaymentAdditionalFieldType.CARD_TYPE.getType(),
-                         paramMap.get(NullPaymentGatewayConstants.CREDIT_CARD_TYPE)[0])
-                   .responseMap(PaymentAdditionalFieldType.NAME_ON_CARD.getType(),
-                         paramMap.get(NullPaymentGatewayConstants.CREDIT_CARD_NAME)[0])
-                   .responseMap(PaymentAdditionalFieldType.EXP_DATE.getType(),
-                         paramMap.get(NullPaymentGatewayConstants.CREDIT_CARD_EXP_DATE)[0]);
 
         return responseDTO;
 
+    }
+
+    protected String parse(Map<String,String[]> paramMap, String param) {
+        if (paramMap.containsKey(param)) {
+            return paramMap.get(param)[0];
+        }
+
+        return null;
     }
 
 
