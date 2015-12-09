@@ -92,8 +92,6 @@ public class NullPaymentGatewayWebResponseServiceImpl implements PaymentGatewayW
         responseDTO.successful(approved)
                 .amount(amount)
                 .paymentTransactionType(type)
-                .orderId(paramMap.get(NullPaymentGatewayConstants.ORDER_ID)[0])
-                .customer().customerId(paramMap.get(NullPaymentGatewayConstants.CUSTOMER_ID)[0]).done()
                 .responseMap(NullPaymentGatewayConstants.GATEWAY_TRANSACTION_ID,
                         paramMap.get(NullPaymentGatewayConstants.GATEWAY_TRANSACTION_ID)[0])
                 .responseMap(NullPaymentGatewayConstants.RESULT_MESSAGE,
@@ -114,12 +112,21 @@ public class NullPaymentGatewayWebResponseServiceImpl implements PaymentGatewayW
                     .creditCardType(paramMap.get(NullPaymentGatewayConstants.CREDIT_CARD_TYPE)[0])
                     .creditCardExpDate(paramMap.get(NullPaymentGatewayConstants.CREDIT_CARD_EXP_DATE)[0])
                     .done();
+
+        if (paramMap.containsKey(NullPaymentGatewayConstants.ORDER_ID)) {
+            responseDTO.orderId(paramMap.get(NullPaymentGatewayConstants.ORDER_ID)[0]);
+        }
+
+        if (paramMap.containsKey(NullPaymentGatewayConstants.CUSTOMER_ID)) {
+            responseDTO.customer().customerId(paramMap.get(NullPaymentGatewayConstants.CUSTOMER_ID)[0]);
+        }
         
         //additional fields
         if (paramMap.containsKey(NullPaymentGatewayConstants.PAYMENT_TOKEN_ID)) {
             responseDTO.responseMap(PaymentAdditionalFieldType.TOKEN.getType(),
                         paramMap.get(NullPaymentGatewayConstants.PAYMENT_TOKEN_ID)[0]);
         }
+
         responseDTO.responseMap(PaymentAdditionalFieldType.LAST_FOUR.getType(),
                          paramMap.get(NullPaymentGatewayConstants.CREDIT_CARD_LAST_FOUR)[0])
                    .responseMap(PaymentAdditionalFieldType.CARD_TYPE.getType(),

@@ -101,6 +101,11 @@ public class NullPaymentGatewayTRExtensionHandler extends AbstractTRCreditCardEx
         formParameters.put(getFormActionURLKey(), actionValue);
 
         Map<String, String> hiddenFields = new HashMap<String, String>();
+
+        if (responseDTO.getResponseMap().get(NullPaymentGatewayConstants.TRANSPARENT_REDIRECT_RETURN_URL) != null) {
+            hiddenFields.put(NullPaymentGatewayConstants.TRANSPARENT_REDIRECT_RETURN_URL,
+                    responseDTO.getResponseMap().get(NullPaymentGatewayConstants.TRANSPARENT_REDIRECT_RETURN_URL).toString());
+        }
         
         if (responseDTO.getResponseMap().get(NullPaymentGatewayConstants.TRANSACTION_AMT) != null) {
             hiddenFields.put(NullPaymentGatewayConstants.TRANSACTION_AMT,
