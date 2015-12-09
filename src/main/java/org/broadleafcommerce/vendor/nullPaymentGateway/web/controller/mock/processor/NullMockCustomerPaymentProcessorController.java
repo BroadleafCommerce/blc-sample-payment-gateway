@@ -38,13 +38,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller("blNullMockCustomerPaymentProcessorController")
 public class NullMockCustomerPaymentProcessorController {
 
-    @Resource(name = "blNullPaymentGatewayConfiguration")
-    protected NullPaymentGatewayConfiguration paymentGatewayConfiguration;
-
     @RequestMapping(value = "/null-customer-payment/process", method = RequestMethod.POST)
     public @ResponseBody String processTransparentRedirectForm(HttpServletRequest request){
         Map<String,String[]> paramMap = request.getParameterMap();
 
+        String returnUrl="";
         String customerId="";
         String billingFirstName = "";
         String billingLastName = "";
@@ -71,7 +69,12 @@ public class NullMockCustomerPaymentProcessorController {
         String resultMessage = "";
         String resultSuccess = "";
         String paymentTokenId = UUID.randomUUID().toString();
-        
+
+        if (paramMap.get(NullPaymentGatewayConstants.TRANSPARENT_REDIRECT_RETURN_URL) != null
+                && paramMap.get(NullPaymentGatewayConstants.TRANSPARENT_REDIRECT_RETURN_URL).length > 0) {
+            returnUrl = paramMap.get(NullPaymentGatewayConstants.TRANSPARENT_REDIRECT_RETURN_URL)[0];
+        }
+
         if (paramMap.get(NullPaymentGatewayConstants.CUSTOMER_ID) != null
                 && paramMap.get(NullPaymentGatewayConstants.CUSTOMER_ID).length > 0) {
             customerId = paramMap.get(NullPaymentGatewayConstants.CUSTOMER_ID)[0];
@@ -217,10 +220,10 @@ public class NullMockCustomerPaymentProcessorController {
             }
 
             if (!validDate || !validDateFormat) {
-                resultMessage = "cart.payment.expiration.invalid";
+                resultMessage = "customer.payment.expiration.invalid";
                 resultSuccess = "false";
             } else if (!validCard) {
-                resultMessage = "cart.payment.card.invalid";
+                resultMessage = "customer.payment.card.invalid";
                 resultSuccess = "false";
             } else {
                 resultMessage = "Success!";
@@ -228,7 +231,7 @@ public class NullMockCustomerPaymentProcessorController {
             }
 
         } else {
-            resultMessage = "cart.payment.invalid";
+            resultMessage = "customer.payment.invalid";
             resultSuccess = "false";
         }
 
@@ -240,7 +243,7 @@ public class NullMockCustomerPaymentProcessorController {
         response.append("<!--[if gt IE 8]><!--> <html class=\"no-js\" lang=\"en\"> <!--<![endif]-->");
         response.append("<body>");
         response.append("<form action=\"" +
-                paymentGatewayConfiguration.getCustomerPaymentTransparentRedirectReturnUrl() +
+                returnUrl +
                 "\" method=\"POST\" id=\"NullPaymentGatewayRedirectForm\" name=\"NullPaymentGatewayRedirectForm\">");
         response.append("<input type=\"hidden\" name=\"" + NullPaymentGatewayConstants.CUSTOMER_ID
                 +"\" value=\"" + customerId + "\"/>");

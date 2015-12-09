@@ -21,6 +21,8 @@
 package org.broadleafcommerce.payment.service.gateway;
 
 import org.broadleafcommerce.common.payment.PaymentType;
+import org.broadleafcommerce.common.payment.TransparentRedirectConstants;
+import org.broadleafcommerce.common.payment.TransparentRedirectRequestType;
 import org.broadleafcommerce.common.payment.dto.AddressDTO;
 import org.broadleafcommerce.common.payment.dto.PaymentRequestDTO;
 import org.broadleafcommerce.common.payment.dto.PaymentResponseDTO;
@@ -64,31 +66,55 @@ public class NullPaymentGatewayTransparentRedirectServiceImpl implements Payment
     }
 
     protected PaymentResponseDTO createCommonTRFields(PaymentRequestDTO requestDTO) {
-        Assert.isTrue(requestDTO.getTransactionTotal() != null,
-                "The Transaction Total on the Payment Request DTO must not be null");
-        Assert.isTrue(requestDTO.getOrderId() != null,
-                "The Order ID on the Payment Request DTO must not be null");
+        if (requestDTO.getAdditionalFields().containsKey(TransparentRedirectRequestType.CUSTOMER_PAYMENT.getType())) {
+            Assert.isTrue(requestDTO.getCustomer() != null,
+                    "The Customer on the Payment Request DTO must not be null for a Customer Payment tokenization request.");
+        } else {
+            Assert.isTrue(requestDTO.getTransactionTotal() != null,
+                    "The Transaction Total on the Payment Request DTO must not be null");
+            Assert.isTrue(requestDTO.getOrderId() != null,
+                    "The Order ID on the Payment Request DTO must not be null");
+        }
 
         //Put The shipping, billing, and transaction amount fields as hidden fields on the form
         //In a real implementation, the gateway will probably provide some API to tokenize this information
         //which you can then put on your form as a secure token. For this sample,
         // we will just place them as plain-text hidden fields on the form
         PaymentResponseDTO responseDTO = new PaymentResponseDTO(PaymentType.CREDIT_CARD,
-                NullPaymentGatewayType.NULL_GATEWAY)
-                .responseMap(NullPaymentGatewayConstants.ORDER_ID, requestDTO.getOrderId())
-                .responseMap(NullPaymentGatewayConstants.TRANSACTION_AMT, requestDTO.getTransactionTotal());
-        
-        if (requestDTO.getCustomer() != null){
-            responseDTO.responseMap(NullPaymentGatewayConstants.CUSTOMER_ID, requestDTO.getCustomer().getCustomerId());
-        }
-        
-        if (requestDTO.getAdditionalFields().containsKey("TOKENIZE_REQUEST")){
+                NullPaymentGatewayType.NULL_GATEWAY);
+
+        //If - this is a Customer Payment Transparent Redirect request, then
+        //populate the response DTO with the appropriate Customer information
+        //as well as the correct transparent redirect URL and return URL.
+        //Else - this is a normal Payment Transaction Transparent Redirect request which would normally be
+        //called during a checkout flow and the appropriate Order information will be put on the response DTO
+        if (requestDTO.getAdditionalFields().containsKey(TransparentRedirectRequestType.CUSTOMER_PAYMENT.getType())){
             responseDTO.responseMap(NullPaymentGatewayConstants.TRANSPARENT_REDIRECT_URL,
                     configuration.getCustomerPaymentTransparentRedirectUrl());
-        }
-        else{
+
+            //If the request contains information about an override return URL, use the one specified on the request dto.
+            //e.g. some modules like OMS may use the transparent redirect mechanism to create payment tokens,
+            // if the request is originating from a module, then it may override the return url,
+            // else the request would be coming from a normal flow, like adding a customer payment token from a customer's profile page.
+            if (requestDTO.getAdditionalFields().containsKey(TransparentRedirectConstants.OVERRIDE_RETURN_URL)) {
+                responseDTO.responseMap(NullPaymentGatewayConstants.TRANSPARENT_REDIRECT_RETURN_URL,
+                    (String)requestDTO.getAdditionalFields().get(TransparentRedirectConstants.OVERRIDE_RETURN_URL));
+            }  else {
+                responseDTO.responseMap(NullPaymentGatewayConstants.TRANSPARENT_REDIRECT_RETURN_URL,
+                    configuration.getCustomerPaymentTransparentRedirectReturnUrl());
+            }
+
+            responseDTO.responseMap(NullPaymentGatewayConstants.CUSTOMER_ID, requestDTO.getCustomer().getCustomerId());
+
+        } else {
+            // This is a normal checkout payment transaction request
             responseDTO.responseMap(NullPaymentGatewayConstants.TRANSPARENT_REDIRECT_URL,
                     configuration.getTransparentRedirectUrl());
+            responseDTO.responseMap(NullPaymentGatewayConstants.TRANSPARENT_REDIRECT_RETURN_URL,
+                    configuration.getTransparentRedirectReturnUrl());
+
+            responseDTO.responseMap(NullPaymentGatewayConstants.ORDER_ID, requestDTO.getOrderId());
+            responseDTO.responseMap(NullPaymentGatewayConstants.TRANSACTION_AMT, requestDTO.getTransactionTotal());
         }
 
         AddressDTO billTo = requestDTO.getBillTo();

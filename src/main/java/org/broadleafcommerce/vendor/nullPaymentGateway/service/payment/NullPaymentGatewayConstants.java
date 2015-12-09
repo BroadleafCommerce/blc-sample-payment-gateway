@@ -28,6 +28,7 @@ public class NullPaymentGatewayConstants {
     public static final String RESULT_SUCCESS = "SUCCESS";
     public static final String RESULT_MESSAGE = "MESSAGE";
     public static final String TRANSPARENT_REDIRECT_URL = "TRANSPARENT_REDIRECT_URL";
+    public static final String TRANSPARENT_REDIRECT_RETURN_URL = "TRANSPARENT_REDIRECT_RETURN_URL";
     public static final String HOSTED_REDIRECT_URL = "HOSTED_REDIRECT_URL";
     public static final String COMPLETE_CHECKOUT_ON_CALLBACK = "COMPLETE_CHECKOUT_ON_CALLBACK";
 
