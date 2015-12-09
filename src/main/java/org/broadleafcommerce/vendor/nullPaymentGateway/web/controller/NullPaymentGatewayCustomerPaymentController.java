@@ -52,11 +52,6 @@ public class NullPaymentGatewayCustomerPaymentController extends CustomerPayment
 
     @Resource(name = "blNullPaymentGatewayConfiguration")
     protected NullPaymentGatewayConfiguration paymentGatewayConfiguration;
-    
-    @Override
-    public String getGatewayContextKey() {
-        return GATEWAY_CONTEXT_KEY;
-    }
 
     @Override
     public PaymentGatewayWebResponseService getWebResponseService() {
@@ -71,6 +66,11 @@ public class NullPaymentGatewayCustomerPaymentController extends CustomerPayment
     @Override
     public String getCustomerPaymentViewRedirect(String customerPaymentId) {
         return "redirect:/account/payment/" + customerPaymentId;
+    }
+
+    @Override
+    public String getCustomerPaymentErrorRedirect() {
+        return "redirect:/account/payment";
     }
 
     @Override
@@ -94,6 +94,6 @@ public class NullPaymentGatewayCustomerPaymentController extends CustomerPayment
                                 Map<String, String> pathVars) throws PaymentException {
         redirectAttributes.addAttribute(CUSTOMER_PAYMENT_ERROR,
                 request.getParameter(CUSTOMER_PAYMENT_ERROR));
-        return super.getErrorViewRedirect();
+        return getCustomerPaymentErrorRedirect();
     }
 }

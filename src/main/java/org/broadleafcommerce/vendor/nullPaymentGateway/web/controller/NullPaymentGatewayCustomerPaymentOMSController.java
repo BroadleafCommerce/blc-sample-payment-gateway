@@ -52,11 +52,6 @@ public class NullPaymentGatewayCustomerPaymentOMSController extends CustomerPaym
     protected NullPaymentGatewayConfiguration paymentGatewayConfiguration;
 
     @Override
-    public String getGatewayContextKey() {
-        return GATEWAY_CONTEXT_KEY;
-    }
-
-    @Override
     public PaymentGatewayWebResponseService getWebResponseService() {
         return paymentGatewayWebResponseService;
     }
@@ -69,6 +64,11 @@ public class NullPaymentGatewayCustomerPaymentOMSController extends CustomerPaym
     @Override
     public String getCustomerPaymentViewRedirect(String customerPaymentId) {
         return "redirect:/oms-csrtools/checkout";
+    }
+
+    @Override
+    public String getCustomerPaymentErrorRedirect() {
+        return "redirect:/oms-csrtools/payment-methods/add";
     }
 
     @Override
@@ -92,7 +92,7 @@ public class NullPaymentGatewayCustomerPaymentOMSController extends CustomerPaym
                                 Map<String, String> pathVars) throws PaymentException {
         redirectAttributes.addAttribute(CUSTOMER_PAYMENT_ERROR,
                 request.getParameter(CUSTOMER_PAYMENT_ERROR));
-        return super.getErrorViewRedirect();
+        return getCustomerPaymentErrorRedirect();
     }
 
 }
