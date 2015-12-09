@@ -32,7 +32,9 @@
            http://schema.broadleafcommerce.org/mo/mo-3.0.xsd">
            
     <context:component-scan base-package="org.broadleafcommerce.payment.service.gateway"/>
-    
+
+    <bean class="org.broadleafcommerce.vendor.nullPaymentGateway.service.payment.NullPaymentGatewayType"/>
+
     <bean id="blNullPaymentGatewayHostedActionProcessor" class="org.broadleafcommerce.vendor.nullPaymentGateway.web.processor.NullPaymentGatewayHostedActionProcessor"/>
     <bean id="blNullPaymentGatewayTRExtensionHandler" class="org.broadleafcommerce.vendor.nullPaymentGateway.web.processor.NullPaymentGatewayTRExtensionHandler"/>
     <bean id="blNullPaymentGatewayFieldExtensionHandler" class="org.broadleafcommerce.vendor.nullPaymentGateway.web.expression.NullPaymentGatewayFieldExtensionHandler"/>
