@@ -100,57 +100,57 @@ public class NullPaymentGatewayFieldExtensionHandler extends AbstractPaymentGate
 
     @Override
     public String getBillToAddressFirstName() {
-        return null;
+        return NullPaymentGatewayConstants.BILLING_FIRST_NAME;
     }
 
     @Override
     public String getBillToAddressLastName() {
-        return null;
+        return NullPaymentGatewayConstants.BILLING_LAST_NAME;
     }
 
     @Override
     public String getBillToAddressCompanyName() {
-        return null;
+        return NullPaymentGatewayConstants.BILLING_COMPANY_NAME;
     }
 
     @Override
     public String getBillToAddressLine1() {
-        return null;
+        return NullPaymentGatewayConstants.BILLING_ADDRESS_LINE1;
     }
 
     @Override
     public String getBillToAddressLine2() {
-        return null;
+        return NullPaymentGatewayConstants.BILLING_ADDRESS_LINE2;
     }
 
     @Override
     public String getBillToAddressCityLocality() {
-        return null;
+        return NullPaymentGatewayConstants.BILLING_CITY;
     }
 
     @Override
     public String getBillToAddressStateRegion() {
-        return null;
+        return NullPaymentGatewayConstants.BILLING_STATE;
     }
 
     @Override
     public String getBillToAddressPostalCode() {
-        return null;
+        return NullPaymentGatewayConstants.BILLING_ZIP;
     }
 
     @Override
     public String getBillToAddressCountryCode() {
-        return null;
+        return NullPaymentGatewayConstants.BILLING_COUNTRY;
     }
 
     @Override
     public String getBillToAddressPhone() {
-        return null;
+        return NullPaymentGatewayConstants.BILLING_PHONE;
     }
 
     @Override
     public String getBillToAddressEmail() {
-        return null;
+        return NullPaymentGatewayConstants.BILLING_EMAIL;
     }
 
     @Override
