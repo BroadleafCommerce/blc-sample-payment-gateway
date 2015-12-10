@@ -38,7 +38,7 @@ public class NullPaymentGatewayConfigurationImpl implements NullPaymentGatewayCo
 
     protected int failureReportingThreshold = 1;
 
-    protected boolean performAuthorizeAndCapture = true;
+    protected boolean performAuthorizeAndCapture = false;
 
     @Override
     public String getTransparentRedirectUrl() {
