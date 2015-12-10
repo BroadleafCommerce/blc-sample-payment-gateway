@@ -37,21 +37,27 @@ public class NullPaymentGatewayConstants {
 
     public static final String BILLING_FIRST_NAME = "NULL_BILLING_FIRST_NAME";
     public static final String BILLING_LAST_NAME = "NULL_BILLING_LAST_NAME";
+    public static final String BILLING_COMPANY_NAME = "NULL_BILLING_COMPANY_NAME";
     public static final String BILLING_ADDRESS_LINE1 = "NULL_BILLING_ADDRESS_LINE1";
     public static final String BILLING_ADDRESS_LINE2 = "NULL_BILLING_ADDRESS_LINE2";
     public static final String BILLING_CITY = "NULL_BILLING_CITY";
     public static final String BILLING_STATE = "NULL_BILLING_STATE";
     public static final String BILLING_ZIP = "NULL_BILLING_ZIP";
     public static final String BILLING_COUNTRY = "NULL_BILLING_COUNTRY";
+    public static final String BILLING_PHONE = "NULL_BILLING_PHONE";
+    public static final String BILLING_EMAIL = "NULL_BILLING_EMAIL";
 
     public static final String SHIPPING_FIRST_NAME = "NULL_SHIPPING_FIRST_NAME";
     public static final String SHIPPING_LAST_NAME = "NULL_SHIPPING_LAST_NAME";
+    public static final String SHIPPING_COMPANY_NAME = "NULL_SHIPPING_COMPANY_NAME";
     public static final String SHIPPING_ADDRESS_LINE1 = "NULL_SHIPPING_ADDRESS_LINE1";
     public static final String SHIPPING_ADDRESS_LINE2 = "NULL_SHIPPING_ADDRESS_LINE2";
     public static final String SHIPPING_CITY = "NULL_SHIPPING_CITY";
     public static final String SHIPPING_STATE = "NULL_SHIPPING_STATE";
     public static final String SHIPPING_ZIP = "NULL_SHIPPING_ZIP";
     public static final String SHIPPING_COUNTRY = "NULL_SHIPPING_COUNTRY";
+    public static final String SHIPPING_PHONE = "NULL_SHIPPING_PHONE";
+    public static final String SHIPPING_EMAIL = "NULL_SHIPPING_EMAIL";
 
     public static final String CREDIT_CARD_NAME = "CREDIT_CARD_NAME";
     public static final String CREDIT_CARD_NUMBER = "CREDIT_CARD_NUMBER";
