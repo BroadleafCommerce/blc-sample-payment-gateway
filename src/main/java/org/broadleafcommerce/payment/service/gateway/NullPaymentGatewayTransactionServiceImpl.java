@@ -22,6 +22,7 @@ package org.broadleafcommerce.payment.service.gateway;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.validator.CreditCardValidator;
 import org.broadleafcommerce.common.money.Money;
+import org.broadleafcommerce.common.payment.PaymentGatewayRequestType;
 import org.broadleafcommerce.common.payment.PaymentTransactionType;
 import org.broadleafcommerce.common.payment.PaymentType;
 import org.broadleafcommerce.common.payment.dto.CreditCardDTO;
@@ -80,24 +81,53 @@ public class NullPaymentGatewayTransactionServiceImpl implements PaymentGatewayT
 
     @Override
     public PaymentResponseDTO reverseAuthorize(PaymentRequestDTO paymentRequestDTO) throws PaymentException {
-        throw new PaymentException("The Rollback authorize method is not supported for this module");
-    }
-
-    @Override
-    public PaymentResponseDTO refund(PaymentRequestDTO paymentRequestDTO) throws PaymentException {
         PaymentResponseDTO responseDTO = new PaymentResponseDTO(PaymentType.CREDIT_CARD, NullPaymentGatewayType.NULL_GATEWAY);
         responseDTO.valid(true)
-                .paymentTransactionType(PaymentTransactionType.REFUND)
+                .paymentTransactionType(PaymentTransactionType.REVERSE_AUTH)
                 .amount(new Money(paymentRequestDTO.getTransactionTotal()))
-                .rawResponse("Successful Refund")
+                .rawResponse("Successful Reverse Authorization")
                 .successful(true);
 
         return responseDTO;
     }
 
     @Override
+    public PaymentResponseDTO refund(PaymentRequestDTO paymentRequestDTO) throws PaymentException {
+
+        //This null gateway implementation will mimic the ability to support a DETACHED_CREDIT refund.
+        if (paymentRequestDTO.getAdditionalFields().containsKey(PaymentGatewayRequestType.DETACHED_CREDIT_REFUND.getType())){
+            PaymentResponseDTO responseDTO = new PaymentResponseDTO(PaymentType.CREDIT_CARD, NullPaymentGatewayType.NULL_GATEWAY);
+            responseDTO.valid(true)
+                    .paymentTransactionType(PaymentTransactionType.DETACHED_CREDIT)
+                    .amount(new Money(paymentRequestDTO.getTransactionTotal()))
+                    .rawResponse("Successful Detached Credit")
+                    .successful(true);
+
+            return responseDTO;
+        } else {
+            //This is a normal "follow-on" refund request
+            PaymentResponseDTO responseDTO = new PaymentResponseDTO(PaymentType.CREDIT_CARD, NullPaymentGatewayType.NULL_GATEWAY);
+            responseDTO.valid(true)
+                    .paymentTransactionType(PaymentTransactionType.REFUND)
+                    .amount(new Money(paymentRequestDTO.getTransactionTotal()))
+                    .rawResponse("Successful Refund")
+                    .successful(true);
+
+            return responseDTO;
+        }
+
+    }
+
+    @Override
     public PaymentResponseDTO voidPayment(PaymentRequestDTO paymentRequestDTO) throws PaymentException {
-        throw new PaymentException("The void method is not supported for this module");
+        PaymentResponseDTO responseDTO = new PaymentResponseDTO(PaymentType.CREDIT_CARD, NullPaymentGatewayType.NULL_GATEWAY);
+        responseDTO.valid(true)
+                .paymentTransactionType(PaymentTransactionType.VOID)
+                .amount(new Money(paymentRequestDTO.getTransactionTotal()))
+                .rawResponse("Successful Reverse Authorization")
+                .successful(true);
+
+        return responseDTO;
     }
 
     /**

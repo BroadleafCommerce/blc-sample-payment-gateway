@@ -20,9 +20,9 @@
 
 package org.broadleafcommerce.payment.service.gateway;
 
+import org.broadleafcommerce.common.payment.PaymentGatewayRequestType;
 import org.broadleafcommerce.common.payment.PaymentType;
 import org.broadleafcommerce.common.payment.TransparentRedirectConstants;
-import org.broadleafcommerce.common.payment.TransparentRedirectRequestType;
 import org.broadleafcommerce.common.payment.dto.AddressDTO;
 import org.broadleafcommerce.common.payment.dto.PaymentRequestDTO;
 import org.broadleafcommerce.common.payment.dto.PaymentResponseDTO;
@@ -66,7 +66,7 @@ public class NullPaymentGatewayTransparentRedirectServiceImpl implements Payment
     }
 
     protected PaymentResponseDTO createCommonTRFields(PaymentRequestDTO requestDTO) {
-        if (requestDTO.getAdditionalFields().containsKey(TransparentRedirectRequestType.CUSTOMER_PAYMENT.getType())) {
+        if (requestDTO.getAdditionalFields().containsKey(PaymentGatewayRequestType.CUSTOMER_PAYMENT_TR.getType())) {
             Assert.isTrue(requestDTO.getCustomer() != null,
                     "The Customer on the Payment Request DTO must not be null for a Customer Payment tokenization request.");
         } else {
@@ -88,7 +88,7 @@ public class NullPaymentGatewayTransparentRedirectServiceImpl implements Payment
         //as well as the correct transparent redirect URL and return URL.
         //Else - this is a normal Payment Transaction Transparent Redirect request which would normally be
         //called during a checkout flow and the appropriate Order information will be put on the response DTO
-        if (requestDTO.getAdditionalFields().containsKey(TransparentRedirectRequestType.CUSTOMER_PAYMENT.getType())){
+        if (requestDTO.getAdditionalFields().containsKey(PaymentGatewayRequestType.CUSTOMER_PAYMENT_TR.getType())){
             responseDTO.responseMap(NullPaymentGatewayConstants.TRANSPARENT_REDIRECT_URL,
                     configuration.getCustomerPaymentTransparentRedirectUrl());
 
