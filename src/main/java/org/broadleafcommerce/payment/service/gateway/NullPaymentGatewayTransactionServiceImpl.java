@@ -22,6 +22,7 @@ package org.broadleafcommerce.payment.service.gateway;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.validator.CreditCardValidator;
 import org.broadleafcommerce.common.money.Money;
+import org.broadleafcommerce.common.payment.PaymentAdditionalFieldType;
 import org.broadleafcommerce.common.payment.PaymentGatewayRequestType;
 import org.broadleafcommerce.common.payment.PaymentTransactionType;
 import org.broadleafcommerce.common.payment.PaymentType;
@@ -144,13 +145,20 @@ public class NullPaymentGatewayTransactionServiceImpl implements PaymentGatewayT
 
         CreditCardDTO creditCardDTO = requestDTO.getCreditCard();
         String transactionAmount = requestDTO.getTransactionTotal();
+        String paymentToken = (String) requestDTO.getAdditionalFields().get(PaymentAdditionalFieldType.TOKEN.getType());
 
         CreditCardValidator visaValidator = new CreditCardValidator(CreditCardValidator.VISA);
         CreditCardValidator amexValidator = new CreditCardValidator(CreditCardValidator.AMEX);
         CreditCardValidator mcValidator = new CreditCardValidator(CreditCardValidator.MASTERCARD);
         CreditCardValidator discoverValidator = new CreditCardValidator(CreditCardValidator.DISCOVER);
 
-        if (StringUtils.isNotBlank(transactionAmount) &&
+        if (StringUtils.isNotBlank(transactionAmount) && StringUtils.isNotBlank(paymentToken)) {
+            // auto assume that if a token is passed in it is valid and will mock a success.
+            responseDTO.amount(new Money(requestDTO.getTransactionTotal()))
+                    .rawResponse("Success!")
+                    .successful(true);
+        } else if (StringUtils.isNotBlank(transactionAmount) &&
+                creditCardDTO != null &&
                 StringUtils.isNotBlank(creditCardDTO.getCreditCardNum()) &&
                 (StringUtils.isNotBlank(creditCardDTO.getCreditCardExpDate()) ||
                         (StringUtils.isNotBlank(creditCardDTO.getCreditCardExpMonth()) &&
