@@ -21,6 +21,7 @@
 package org.broadleafcommerce.payment.service.gateway;
 
 import org.broadleafcommerce.common.payment.PaymentGatewayType;
+import org.broadleafcommerce.common.payment.service.AbstractPaymentGatewayConfiguration;
 import org.broadleafcommerce.vendor.nullPaymentGateway.service.payment.NullPaymentGatewayType;
 import org.springframework.stereotype.Service;
 
@@ -34,7 +35,7 @@ import org.springframework.stereotype.Service;
  * @author Elbert Bautista (elbertbautista)
  */
 @Service("blNullPaymentGatewayConfiguration")
-public class NullPaymentGatewayConfigurationImpl implements NullPaymentGatewayConfiguration {
+public class NullPaymentGatewayConfigurationImpl extends AbstractPaymentGatewayConfiguration implements NullPaymentGatewayConfiguration {
 
     protected int failureReportingThreshold = 1;
 

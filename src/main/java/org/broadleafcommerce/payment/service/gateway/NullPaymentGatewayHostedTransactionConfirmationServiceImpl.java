@@ -27,6 +27,7 @@ import org.broadleafcommerce.common.payment.PaymentTransactionType;
 import org.broadleafcommerce.common.payment.PaymentType;
 import org.broadleafcommerce.common.payment.dto.PaymentRequestDTO;
 import org.broadleafcommerce.common.payment.dto.PaymentResponseDTO;
+import org.broadleafcommerce.common.payment.service.AbstractPaymentGatewayTransactionConfirmationService;
 import org.broadleafcommerce.common.payment.service.PaymentGatewayTransactionConfirmationService;
 import org.broadleafcommerce.common.vendor.service.exception.PaymentException;
 import org.broadleafcommerce.vendor.nullPaymentGateway.service.payment.NullPaymentGatewayType;
@@ -38,7 +39,7 @@ import javax.annotation.Resource;
  * @author Elbert Bautista (elbertbautista)
  */
 @Service("blNullPaymentGatewayHostedTransactionConfirmationService")
-public class NullPaymentGatewayHostedTransactionConfirmationServiceImpl implements PaymentGatewayTransactionConfirmationService {
+public class NullPaymentGatewayHostedTransactionConfirmationServiceImpl extends AbstractPaymentGatewayTransactionConfirmationService {
 
     protected static final Log LOG = LogFactory.getLog(NullPaymentGatewayHostedTransactionConfirmationServiceImpl.class);
 

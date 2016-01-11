@@ -29,6 +29,7 @@ import org.broadleafcommerce.common.payment.PaymentType;
 import org.broadleafcommerce.common.payment.dto.CreditCardDTO;
 import org.broadleafcommerce.common.payment.dto.PaymentRequestDTO;
 import org.broadleafcommerce.common.payment.dto.PaymentResponseDTO;
+import org.broadleafcommerce.common.payment.service.AbstractPaymentGatewayTransactionService;
 import org.broadleafcommerce.common.payment.service.FailureCountExposable;
 import org.broadleafcommerce.common.payment.service.PaymentGatewayTransactionService;
 import org.broadleafcommerce.common.vendor.service.exception.PaymentException;
@@ -53,7 +54,7 @@ import org.springframework.stereotype.Service;
  * @author Elbert Bautista (elbertbautista)
  */
 @Service("blNullPaymentGatewayTransactionService")
-public class NullPaymentGatewayTransactionServiceImpl implements PaymentGatewayTransactionService, FailureCountExposable {
+public class NullPaymentGatewayTransactionServiceImpl extends AbstractPaymentGatewayTransactionService implements FailureCountExposable {
 
     protected Integer failureCount = 0;
     protected Boolean isUp = true;

@@ -35,6 +35,7 @@
 
 package org.broadleafcommerce.payment.service.gateway;
 
+import org.broadleafcommerce.common.payment.service.AbstractPaymentGatewayConfigurationService;
 import org.broadleafcommerce.common.payment.service.PaymentGatewayConfiguration;
 import org.broadleafcommerce.common.payment.service.PaymentGatewayConfigurationService;
 import org.broadleafcommerce.common.payment.service.PaymentGatewayCreditCardService;
@@ -59,7 +60,7 @@ import javax.annotation.Resource;
  * @author Elbert Bautista (elbertbautista)
  */
 @Service("blNullPaymentGatewayHostedConfigurationService")
-public class NullPaymentGatewayHostedConfigurationServiceImpl implements PaymentGatewayConfigurationService {
+public class NullPaymentGatewayHostedConfigurationServiceImpl extends AbstractPaymentGatewayConfigurationService {
 
     @Resource(name = "blNullPaymentGatewayHostedConfiguration")
     protected NullPaymentGatewayHostedConfiguration configuration;

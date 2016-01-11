@@ -22,6 +22,7 @@ package org.broadleafcommerce.payment.service.gateway;
 import org.broadleafcommerce.common.payment.PaymentType;
 import org.broadleafcommerce.common.payment.dto.PaymentRequestDTO;
 import org.broadleafcommerce.common.payment.dto.PaymentResponseDTO;
+import org.broadleafcommerce.common.payment.service.AbstractPaymentGatewayHostedService;
 import org.broadleafcommerce.common.payment.service.PaymentGatewayHostedService;
 import org.broadleafcommerce.common.vendor.service.exception.PaymentException;
 import org.broadleafcommerce.vendor.nullPaymentGateway.service.payment.NullPaymentGatewayConstants;
@@ -44,7 +45,7 @@ import javax.annotation.Resource;
  * @author Elbert Bautista (elbertbautista)
  */
 @Service("blNullPaymentGatewayHostedService")
-public class NullPaymentGatewayHostedServiceImpl implements PaymentGatewayHostedService {
+public class NullPaymentGatewayHostedServiceImpl extends AbstractPaymentGatewayHostedService {
 
     @Resource(name = "blNullPaymentGatewayHostedConfiguration")
     protected NullPaymentGatewayHostedConfiguration configuration;

@@ -26,6 +26,7 @@ import org.broadleafcommerce.common.payment.PaymentAdditionalFieldType;
 import org.broadleafcommerce.common.payment.PaymentTransactionType;
 import org.broadleafcommerce.common.payment.PaymentType;
 import org.broadleafcommerce.common.payment.dto.PaymentResponseDTO;
+import org.broadleafcommerce.common.payment.service.AbstractPaymentGatewayWebResponseService;
 import org.broadleafcommerce.common.payment.service.PaymentGatewayWebResponsePrintService;
 import org.broadleafcommerce.common.payment.service.PaymentGatewayWebResponseService;
 import org.broadleafcommerce.common.vendor.service.exception.PaymentException;
@@ -54,7 +55,7 @@ import java.util.Map;
  * @author Elbert Bautista (elbertbautista)
  */
 @Service("blNullPaymentGatewayWebResponseService")
-public class NullPaymentGatewayWebResponseServiceImpl implements PaymentGatewayWebResponseService {
+public class NullPaymentGatewayWebResponseServiceImpl extends AbstractPaymentGatewayWebResponseService {
 
     @Resource(name = "blPaymentGatewayWebResponsePrintService")
     protected PaymentGatewayWebResponsePrintService webResponsePrintService;
@@ -96,6 +97,7 @@ public class NullPaymentGatewayWebResponseServiceImpl implements PaymentGatewayW
                 .customer()
                     .customerId(parse(paramMap, NullPaymentGatewayConstants.CUSTOMER_ID))
                     .done()
+                .paymentToken(parse(paramMap, NullPaymentGatewayConstants.PAYMENT_TOKEN_ID))
                 .responseMap(NullPaymentGatewayConstants.GATEWAY_TRANSACTION_ID,
                         parse(paramMap, NullPaymentGatewayConstants.GATEWAY_TRANSACTION_ID))
                 .responseMap(NullPaymentGatewayConstants.RESULT_MESSAGE,

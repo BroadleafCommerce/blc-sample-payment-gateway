@@ -27,6 +27,7 @@ import org.broadleafcommerce.common.payment.PaymentTransactionType;
 import org.broadleafcommerce.common.payment.PaymentType;
 import org.broadleafcommerce.common.payment.dto.PaymentRequestDTO;
 import org.broadleafcommerce.common.payment.dto.PaymentResponseDTO;
+import org.broadleafcommerce.common.payment.service.AbstractPaymentGatewayRollbackService;
 import org.broadleafcommerce.common.payment.service.PaymentGatewayRollbackService;
 import org.broadleafcommerce.common.vendor.service.exception.PaymentException;
 import org.broadleafcommerce.vendor.nullPaymentGateway.service.payment.NullPaymentGatewayType;
@@ -36,7 +37,7 @@ import org.springframework.stereotype.Service;
  * @author Elbert Bautista (elbertbautista)
  */
 @Service("blNullPaymentGatewayRollbackService")
-public class NullPaymentGatewayRollbackServiceImpl implements PaymentGatewayRollbackService {
+public class NullPaymentGatewayRollbackServiceImpl extends AbstractPaymentGatewayRollbackService {
 
     protected static final Log LOG = LogFactory.getLog(NullPaymentGatewayRollbackServiceImpl.class);
 
