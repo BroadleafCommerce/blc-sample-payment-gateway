@@ -60,6 +60,9 @@ public class NullMockCustomerPaymentProcessorController {
         String shippingState = "";
         String shippingZip = "";
         String shippingCountry = "";
+        String emailAddress = "";
+        String companyName = "";
+        String billingPhone = "";
         String creditCardName = "";
         String creditCardNumber = "";
         String creditCardExpDate = "";
@@ -159,6 +162,21 @@ public class NullMockCustomerPaymentProcessorController {
                 && paramMap.get(NullPaymentGatewayConstants.SHIPPING_COUNTRY).length > 0) {
             shippingCountry = paramMap.get(NullPaymentGatewayConstants.SHIPPING_COUNTRY)[0];
         }
+
+        if (paramMap.get(NullPaymentGatewayConstants.BILLING_PHONE) != null
+                && paramMap.get(NullPaymentGatewayConstants.BILLING_PHONE).length > 0) {
+            billingPhone = paramMap.get(NullPaymentGatewayConstants.BILLING_PHONE)[0];
+        }
+        
+        if (paramMap.get(NullPaymentGatewayConstants.BILLING_EMAIL) != null
+                && paramMap.get(NullPaymentGatewayConstants.BILLING_EMAIL).length > 0) {
+            emailAddress = paramMap.get(NullPaymentGatewayConstants.BILLING_EMAIL)[0];
+        }
+        
+        if (paramMap.get(NullPaymentGatewayConstants.BILLING_COMPANY_NAME) != null
+                && paramMap.get(NullPaymentGatewayConstants.BILLING_COMPANY_NAME).length > 0) {
+            companyName = paramMap.get(NullPaymentGatewayConstants.BILLING_COMPANY_NAME)[0];
+        } 
 
         if (paramMap.get(NullPaymentGatewayConstants.CREDIT_CARD_NAME) != null
                 && paramMap.get(NullPaymentGatewayConstants.CREDIT_CARD_NAME).length > 0) {
@@ -283,6 +301,12 @@ public class NullMockCustomerPaymentProcessorController {
                 +"\" value=\"" + shippingZip + "\"/>");
         response.append("<input type=\"hidden\" name=\"" + NullPaymentGatewayConstants.SHIPPING_COUNTRY
                 +"\" value=\"" + shippingCountry + "\"/>");
+        response.append("<input type=\"hidden\" name=\"" + NullPaymentGatewayConstants.BILLING_PHONE
+                +"\" value=\"" + billingPhone + "\"/>");
+        response.append("<input type=\"hidden\" name=\"" + NullPaymentGatewayConstants.BILLING_EMAIL
+                +"\" value=\"" + emailAddress + "\"/>");
+        response.append("<input type=\"hidden\" name=\"" + NullPaymentGatewayConstants.BILLING_COMPANY_NAME
+                +"\" value=\"" + companyName + "\"/>");
         response.append("<input type=\"hidden\" name=\"" + NullPaymentGatewayConstants.CREDIT_CARD_NAME
                 +"\" value=\"" + creditCardName + "\"/>");
         response.append("<input type=\"hidden\" name=\"" + NullPaymentGatewayConstants.CREDIT_CARD_LAST_FOUR
