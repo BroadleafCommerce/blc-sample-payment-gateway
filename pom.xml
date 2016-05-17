@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.broadleafcommerce</groupId>
         <artifactId>broadleaf-module-parent</artifactId>
-        <version>1.0.6-GA</version>
+        <version>1.0.10-GA</version>
     </parent>
 
     <artifactId>broadleaf-passthrough-payment-gateway</artifactId>
@@ -14,7 +14,7 @@
     <version>2.0.0-SNAPSHOT</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <blc.version>4.1.0-SNAPSHOT</blc.version>
+        <blc.version>5.0.0-GA</blc.version>
         <project.uri>${user.dir}</project.uri>
         <attachSources>true</attachSources>
     </properties>
@@ -50,12 +50,12 @@
         <repository>
             <id>public releases</id>
             <name>public releases</name>
-            <url>http://www.broadleafcommerce.org/nexus/content/repositories/releases</url>
+            <url>http://broadleafcommerce.org/nexus/content/groups/community-releases</url>
         </repository>
         <repository>
             <id>public snapshots</id>
             <name>public snapshots</name>
-            <url>http://www.broadleafcommerce.org/nexus/content/repositories/snapshots/</url>
+            <url>http://broadleafcommerce.org/nexus/content/groups/community-snapshots/</url>
         </repository>
     </repositories>
     <build>
