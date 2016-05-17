@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.broadleafcommerce</groupId>
@@ -7,10 +8,10 @@
         <version>1.0.10-GA</version>
     </parent>
 
-    <artifactId>broadleaf-passthrough-payment-gateway</artifactId>
-    <name>BroadleafCommerce Passthrough Payment Gateway</name>
-    <description>BroadleafCommerce Passthrough Payment Gateway</description>
-    <version>2.0.1-SNAPSHOT</version>
+    <artifactId>broadleaf-sample-payment-gateway</artifactId>
+    <name>BroadleafCommerce Sample Payment Gateway</name>
+    <description>BroadleafCommerce Sample Payment Gateway</description>
+    <version>2.0.0-SNAPSHOT</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <blc.version>5.0.0-GA</blc.version>
@@ -18,11 +19,10 @@
         <attachSources>true</attachSources>
     </properties>
     <scm>
-        <connection>scm:git:git@github.com:BroadleafCommerce/blc-passthrough-payment-gateway.git</connection>
-        <developerConnection>scm:git:git@github.com:BroadleafCommerce/blc-passthrough-payment-gateway.git</developerConnection>
+        <connection>scm:git:git@github.com:BroadleafCommerce/blc-sample-payment-gateway.git</connection>
+        <developerConnection>scm:git:git@github.com:BroadleafCommerce/blc-sample-payment-gateway.git</developerConnection>
         <url>https://github.com/BroadleafCommerce/BroadleafCommerce</url>
-      <tag>HEAD</tag>
-  </scm>
+    </scm>
 
     <url>http://www.broadleafcommerce.com</url>
     <licenses>
