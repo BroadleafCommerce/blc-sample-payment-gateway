@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.broadleafcommerce</groupId>
@@ -11,7 +10,7 @@
     <artifactId>broadleaf-sample-payment-gateway</artifactId>
     <name>BroadleafCommerce Sample Payment Gateway</name>
     <description>BroadleafCommerce Sample Payment Gateway</description>
-    <version>2.0.0-SNAPSHOT</version>
+    <version>2.0.0-GA</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <blc.version>5.0.0-GA</blc.version>
@@ -22,7 +21,8 @@
         <connection>scm:git:git@github.com:BroadleafCommerce/blc-sample-payment-gateway.git</connection>
         <developerConnection>scm:git:git@github.com:BroadleafCommerce/blc-sample-payment-gateway.git</developerConnection>
         <url>https://github.com/BroadleafCommerce/BroadleafCommerce</url>
-    </scm>
+      <tag>broadleaf-sample-payment-gateway-2.0.0</tag>
+  </scm>
 
     <url>http://www.broadleafcommerce.com</url>
     <licenses>
