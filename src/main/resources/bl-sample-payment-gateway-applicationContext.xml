@@ -39,18 +39,6 @@
     <bean id="blSamplePaymentGatewayTRExtensionHandler" class="org.broadleafcommerce.vendor.sample.web.processor.SamplePaymentGatewayTRExtensionHandler"/>
     <bean id="blSamplePaymentGatewayFieldExtensionHandler" class="org.broadleafcommerce.vendor.sample.web.expression.SamplePaymentGatewayFieldExtensionHandler"/>
     
-    <bean id="blSamplePaymentProcessors" class="org.springframework.beans.factory.config.SetFactoryBean">
-        <property name="sourceSet">
-            <set>
-                <ref bean="blSamplePaymentGatewayHostedActionProcessor"/>
-            </set>
-        </property>
-    </bean>
-    <bean class="org.broadleafcommerce.common.extensibility.context.merge.LateStageMergeBeanPostProcessor">
-        <property name="collectionRef" value="blSamplePaymentProcessors"/>
-        <property name="targetRef" value="blDialectProcessors"/>
-    </bean>
-
     <bean id="blSamplePaymentGatewayConfigurationServices" class="org.springframework.beans.factory.config.ListFactoryBean">
         <property name="sourceList">
             <list>
