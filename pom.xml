@@ -10,7 +10,7 @@
     <artifactId>broadleaf-null-payment-gateway</artifactId>
     <name>BroadleafCommerce Null Payment Gateway</name>
     <description>BroadleafCommerce Null Payment Gateway</description>
-    <version>1.1.0-GA</version>
+    <version>1.1.1-SNAPSHOT</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <blc.version>4.1.0-GA</blc.version>
@@ -21,7 +21,7 @@
         <connection>scm:git:git@github.com:BroadleafCommerce/blc-null-payment-gateway.git</connection>
         <developerConnection>scm:git:git@github.com:BroadleafCommerce/blc-null-payment-gateway.git</developerConnection>
         <url>https://github.com/BroadleafCommerce/BroadleafCommerce</url>
-      <tag>broadleaf-null-payment-gateway-1.1.0-GA</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <url>http://www.broadleafcommerce.com</url>
