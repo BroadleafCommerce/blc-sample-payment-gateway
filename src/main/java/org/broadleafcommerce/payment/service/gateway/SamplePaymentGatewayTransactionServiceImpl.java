@@ -31,9 +31,9 @@ import org.broadleafcommerce.common.payment.dto.PaymentRequestDTO;
 import org.broadleafcommerce.common.payment.dto.PaymentResponseDTO;
 import org.broadleafcommerce.common.payment.service.AbstractPaymentGatewayTransactionService;
 import org.broadleafcommerce.common.payment.service.FailureCountExposable;
-import org.broadleafcommerce.common.payment.service.PaymentGatewayTransactionService;
 import org.broadleafcommerce.common.vendor.service.exception.PaymentException;
 import org.broadleafcommerce.common.vendor.service.type.ServiceStatusType;
+import org.broadleafcommerce.vendor.sample.service.payment.SamplePaymentGatewayConstants;
 import org.broadleafcommerce.vendor.sample.service.payment.SamplePaymentGatewayType;
 import org.joda.time.DateTime;
 import org.springframework.stereotype.Service;
@@ -140,6 +140,7 @@ public class SamplePaymentGatewayTransactionServiceImpl extends AbstractPaymentG
      * @return
      */
     protected PaymentResponseDTO commonCreditCardProcessing(PaymentRequestDTO requestDTO, PaymentTransactionType paymentTransactionType) {
+        setupNoncePaymentRequest(requestDTO);
         PaymentResponseDTO responseDTO = new PaymentResponseDTO(PaymentType.CREDIT_CARD, SamplePaymentGatewayType.NULL_GATEWAY);
         responseDTO.valid(true)
                 .paymentTransactionType(paymentTransactionType);
@@ -221,6 +222,19 @@ public class SamplePaymentGatewayTransactionServiceImpl extends AbstractPaymentG
         }
 
         return responseDTO;
+    }
+
+    protected void setupNoncePaymentRequest(PaymentRequestDTO requestDTO) {
+        String nonce = (String) requestDTO.getAdditionalFields().get(SamplePaymentGatewayConstants.PAYMENT_METHOD_NONCE);
+        if (nonce != null) {
+            String[] fields = nonce.split("\\|");
+
+            requestDTO.creditCard()
+                    .creditCardNum(fields[0])
+                    .creditCardHolderName(fields[1])
+                    .creditCardExpDate(fields[2])
+                    .creditCardCvv(fields[3]);
+        }
     }
 
     @Override

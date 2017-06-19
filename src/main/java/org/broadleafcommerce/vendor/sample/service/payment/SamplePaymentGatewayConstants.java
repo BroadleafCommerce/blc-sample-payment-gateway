@@ -70,4 +70,5 @@ public class SamplePaymentGatewayConstants {
 
     public static final String PAYMENT_TOKEN_ID = "PAYMENT_TOKEN_ID";
 
+    public static final String PAYMENT_METHOD_NONCE = "PAYMENT_METHOD_NONCE";
 }
