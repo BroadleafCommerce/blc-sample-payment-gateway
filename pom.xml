@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.broadleafcommerce</groupId>
         <artifactId>broadleaf-module-parent</artifactId>
-        <version>1.0.10-GA</version>
+        <version>1.0.14-GA</version>
     </parent>
 
     <artifactId>broadleaf-sample-payment-gateway</artifactId>
@@ -15,7 +15,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <blc.version>5.1.0-GA</blc.version>
         <project.uri>${user.dir}</project.uri>
-        <attachSources>true</attachSources>
     </properties>
     <scm>
         <connection>scm:git:git@github.com:BroadleafCommerce/blc-sample-payment-gateway.git</connection>
@@ -66,10 +65,6 @@
                 <configuration>
                     <licenseName>blc_apache</licenseName>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
