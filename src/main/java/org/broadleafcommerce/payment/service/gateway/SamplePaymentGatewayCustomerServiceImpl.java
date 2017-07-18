@@ -1,5 +1,6 @@
 package org.broadleafcommerce.payment.service.gateway;
 
+import org.broadleafcommerce.common.payment.CreditCardType;
 import org.broadleafcommerce.common.payment.PaymentType;
 import org.broadleafcommerce.common.payment.dto.GatewayCustomerDTO;
 import org.broadleafcommerce.common.payment.dto.PaymentRequestDTO;
@@ -93,7 +94,7 @@ public class SamplePaymentGatewayCustomerServiceImpl extends AbstractPaymentGate
         responseDTO.creditCard()
                 .creditCardHolderName(customer.getFirstName() + " " + customer.getLastName())
                 .creditCardLastFour("1111")
-                .creditCardType("Mastercard")
+                .creditCardType(CreditCardType.MASTERCARD.getType())
                 .creditCardExpDate("01/99");
     }
 
