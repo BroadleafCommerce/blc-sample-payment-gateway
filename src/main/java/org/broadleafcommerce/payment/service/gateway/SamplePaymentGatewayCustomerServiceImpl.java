@@ -31,6 +31,8 @@ import org.broadleafcommerce.vendor.sample.service.payment.SamplePaymentGatewayT
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
+import java.util.Random;
+
 /**
  * @author Chris Kittrell (ckittrell)
  */
@@ -118,6 +120,9 @@ public class SamplePaymentGatewayCustomerServiceImpl extends AbstractPaymentGate
     }
 
     protected void parsePaymentToken(PaymentResponseDTO responseDTO) {
-        responseDTO.paymentToken("SAMPLE_PAYMENT_GATEWAY_MULTI_USE_TOKEN");
+        Random rnd = new Random();
+        int randomNumber = 100000 + rnd.nextInt(90000000);
+
+        responseDTO.paymentToken("SAMPLE_PAYMENT_GATEWAY_MULTI_USE_TOKEN_" + randomNumber);
     }
 }
