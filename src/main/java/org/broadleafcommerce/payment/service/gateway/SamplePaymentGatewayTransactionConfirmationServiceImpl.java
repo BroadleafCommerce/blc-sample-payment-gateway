@@ -23,6 +23,8 @@ package org.broadleafcommerce.payment.service.gateway;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.broadleafcommerce.common.money.Money;
+import org.broadleafcommerce.common.payment.PaymentAdditionalFieldType;
+import org.broadleafcommerce.common.payment.PaymentDeclineType;
 import org.broadleafcommerce.common.payment.PaymentTransactionType;
 import org.broadleafcommerce.common.payment.PaymentType;
 import org.broadleafcommerce.common.payment.dto.PaymentRequestDTO;
@@ -31,6 +33,8 @@ import org.broadleafcommerce.common.payment.service.AbstractPaymentGatewayTransa
 import org.broadleafcommerce.common.vendor.service.exception.PaymentException;
 import org.broadleafcommerce.vendor.sample.service.payment.SamplePaymentGatewayType;
 import org.springframework.stereotype.Service;
+
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -56,12 +60,33 @@ public class SamplePaymentGatewayTransactionConfirmationServiceImpl extends Abst
             type = PaymentTransactionType.AUTHORIZE;
         }
 
-        return new PaymentResponseDTO(PaymentType.THIRD_PARTY_ACCOUNT,
-                SamplePaymentGatewayType.NULL_GATEWAY)
-                .rawResponse("confirmation - successful")
-                .successful(true)
-                .paymentTransactionType(type)
-                .amount(new Money(paymentRequestDTO.getTransactionTotal()));
+        PaymentResponseDTO responseDTO = new PaymentResponseDTO(PaymentType.THIRD_PARTY_ACCOUNT, SamplePaymentGatewayType.NULL_GATEWAY);
+
+        responseDTO.paymentTransactionType(PaymentTransactionType.AUTHORIZE_AND_CAPTURE);
+        responseDTO.amount(new Money(paymentRequestDTO.getTransactionTotal()));
+
+        Map<String, Object> additionalFields = paymentRequestDTO.getAdditionalFields();
+
+        if (additionalFields != null) {
+            if (additionalFields.containsKey("desiredOutcome")) {
+                String desiredOutome = (String) additionalFields.get("desiredOutcome");
+                if (desiredOutome.equals("SOFT DECLINE")) {
+                    responseDTO.successful(false);
+                    responseDTO.rawResponse("confirmation - failure - soft decline");
+                    responseDTO.responseMap(PaymentAdditionalFieldType.DECLINE_TYPE.getType(), PaymentDeclineType.SOFT.getType());
+                } else if (desiredOutome.equals("HARD DECLINE")) {
+                    responseDTO.successful(false);
+                    responseDTO.rawResponse("confirmation - failure - hard decline");
+                    responseDTO.responseMap(PaymentAdditionalFieldType.DECLINE_TYPE.getType(), PaymentDeclineType.HARD.getType());
+                }
+
+            }
+        } else {
+            responseDTO.rawResponse("confirmation - successful");
+            responseDTO.successful(true);
+        }
+
+        return responseDTO;
     }
 
 }
