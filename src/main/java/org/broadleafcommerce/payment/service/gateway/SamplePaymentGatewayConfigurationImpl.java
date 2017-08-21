@@ -22,6 +22,7 @@ package org.broadleafcommerce.payment.service.gateway;
 
 import org.broadleafcommerce.common.payment.PaymentGatewayType;
 import org.broadleafcommerce.common.payment.service.AbstractPaymentGatewayConfiguration;
+import org.broadleafcommerce.common.web.BroadleafRequestContext;
 import org.broadleafcommerce.vendor.sample.service.payment.SamplePaymentGatewayType;
 import org.springframework.stereotype.Service;
 
@@ -43,23 +44,24 @@ public class SamplePaymentGatewayConfigurationImpl extends AbstractPaymentGatewa
 
     @Override
     public String getTransparentRedirectUrl() {
-        return "/sample-checkout/process";
+        return BroadleafRequestContext.getBroadleafRequestContext().getWebRequest().getContextPath() + "/sample-checkout/process";
     }
 
     @Override
     public String getTransparentRedirectReturnUrl() {
-        return "/sample-checkout/return";
+        return BroadleafRequestContext.getBroadleafRequestContext().getWebRequest().getContextPath() + "/sample-checkout/return";
     }
     
     @Override
     public String getCustomerPaymentTransparentRedirectUrl() {
-        return "/sample-customer-payment/process";
+        return BroadleafRequestContext.getBroadleafRequestContext().getWebRequest().getContextPath() + "/sample-customer-payment/process";
     }
     
     @Override
     public String getCustomerPaymentTransparentRedirectReturnUrl() {
-        return "/sample-customer-payment/return";
+        return BroadleafRequestContext.getBroadleafRequestContext().getWebRequest().getContextPath() + "/sample-customer-payment/return";
     }
+
 
     @Override
     public boolean isPerformAuthorizeAndCapture() {
