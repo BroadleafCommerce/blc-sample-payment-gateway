@@ -37,7 +37,6 @@ package org.broadleafcommerce.payment.service.gateway;
 
 import org.broadleafcommerce.common.payment.service.AbstractPaymentGatewayConfigurationService;
 import org.broadleafcommerce.common.payment.service.PaymentGatewayConfiguration;
-import org.broadleafcommerce.common.payment.service.PaymentGatewayConfigurationService;
 import org.broadleafcommerce.common.payment.service.PaymentGatewayCreditCardService;
 import org.broadleafcommerce.common.payment.service.PaymentGatewayCustomerService;
 import org.broadleafcommerce.common.payment.service.PaymentGatewayFraudService;
@@ -83,6 +82,9 @@ public class SamplePaymentGatewayConfigurationServiceImpl extends AbstractPaymen
     @Resource(name = "blSamplePaymentGatewayFieldExtensionHandler")
     protected PaymentGatewayFieldExtensionHandler fieldExtensionHandler;
 
+    @Resource(name = "blSamplePaymentGatewayTransactionConfirmationService")
+    protected PaymentGatewayTransactionConfirmationService transactionConfirmationService;
+
     public PaymentGatewayConfiguration getConfiguration() {
         return configuration;
     }
@@ -92,7 +94,7 @@ public class SamplePaymentGatewayConfigurationServiceImpl extends AbstractPaymen
     }
 
     public PaymentGatewayTransactionConfirmationService getTransactionConfirmationService() {
-        return null;
+        return transactionConfirmationService;
     }
 
     public PaymentGatewayReportingService getReportingService() {
