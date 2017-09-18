@@ -19,6 +19,7 @@
  */
 package org.broadleafcommerce.vendor.sample.web.controller.mock.processor;
 
+import org.broadleafcommerce.common.util.StringUtil;
 import org.broadleafcommerce.payment.service.gateway.SamplePaymentGatewayHostedConfiguration;
 import org.broadleafcommerce.vendor.sample.service.payment.SamplePaymentGatewayConstants;
 import org.springframework.stereotype.Controller;
@@ -59,19 +60,19 @@ public class SampleMockHostedProcessorController {
         String completeCheckoutOnCallback = "true";
         String resultMessage = "Hosted Call Successful";
 
-        if (paramMap.get(SamplePaymentGatewayConstants.TRANSACTION_AMT) != null
-                && paramMap.get(SamplePaymentGatewayConstants.TRANSACTION_AMT).length > 0) {
-            transactionAmount = paramMap.get(SamplePaymentGatewayConstants.TRANSACTION_AMT)[0];
+        String[] transactionAmountParam = paramMap.get(SamplePaymentGatewayConstants.TRANSACTION_AMT);
+        if (transactionAmountParam != null && transactionAmountParam.length > 0) {
+            transactionAmount = StringUtil.sanitize(transactionAmountParam[0]);
         }
 
-        if (paramMap.get(SamplePaymentGatewayConstants.ORDER_ID) != null
-                && paramMap.get(SamplePaymentGatewayConstants.ORDER_ID).length > 0) {
-            orderId = paramMap.get(SamplePaymentGatewayConstants.ORDER_ID)[0];
+        String[] orderIdParam = paramMap.get(SamplePaymentGatewayConstants.ORDER_ID);
+        if (orderIdParam != null && orderIdParam.length > 0) {
+            orderId = StringUtil.sanitize(orderIdParam[0]);
         }
 
-        if (paramMap.get(SamplePaymentGatewayConstants.COMPLETE_CHECKOUT_ON_CALLBACK) != null
-                && paramMap.get(SamplePaymentGatewayConstants.COMPLETE_CHECKOUT_ON_CALLBACK).length > 0) {
-            completeCheckoutOnCallback = paramMap.get(SamplePaymentGatewayConstants.COMPLETE_CHECKOUT_ON_CALLBACK)[0];
+        String[] completeCheckoutOnCallbackParam = paramMap.get(SamplePaymentGatewayConstants.COMPLETE_CHECKOUT_ON_CALLBACK);
+        if (completeCheckoutOnCallbackParam != null && completeCheckoutOnCallbackParam.length > 0) {
+            completeCheckoutOnCallback = StringUtil.sanitize(completeCheckoutOnCallbackParam[0]);
         }
 
         StringBuffer response = new StringBuffer();
