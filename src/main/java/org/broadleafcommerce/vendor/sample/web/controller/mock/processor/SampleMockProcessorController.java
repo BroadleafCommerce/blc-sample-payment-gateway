@@ -22,6 +22,7 @@ package org.broadleafcommerce.vendor.sample.web.controller.mock.processor;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.validator.CreditCardValidator;
+import org.broadleafcommerce.common.util.StringUtil;
 import org.broadleafcommerce.payment.service.gateway.SamplePaymentGatewayConfiguration;
 import org.broadleafcommerce.vendor.sample.service.payment.SamplePaymentGatewayConstants;
 import org.joda.time.DateTime;
@@ -90,114 +91,114 @@ public class SampleMockProcessorController {
         String resultSuccess = "";
         String gatewayTransactionId = UUID.randomUUID().toString();
 
-        if (paramMap.get(SamplePaymentGatewayConstants.TRANSACTION_AMT) != null
-                && paramMap.get(SamplePaymentGatewayConstants.TRANSACTION_AMT).length > 0) {
-            transactionAmount = paramMap.get(SamplePaymentGatewayConstants.TRANSACTION_AMT)[0];
+        String[] transactionAmountParam = paramMap.get(SamplePaymentGatewayConstants.TRANSACTION_AMT);
+        if (transactionAmountParam != null && transactionAmountParam.length > 0) {
+            transactionAmount = StringUtil.sanitize(transactionAmountParam[0]);
         }
 
-        if (paramMap.get(SamplePaymentGatewayConstants.ORDER_ID) != null
-                && paramMap.get(SamplePaymentGatewayConstants.ORDER_ID).length > 0) {
-            orderId = paramMap.get(SamplePaymentGatewayConstants.ORDER_ID)[0];
+        String[] orderIdParam = paramMap.get(SamplePaymentGatewayConstants.ORDER_ID);
+        if (orderIdParam != null && orderIdParam.length > 0) {
+            orderId = StringUtil.sanitize(orderIdParam[0]);
         }
 
-        if (paramMap.get(SamplePaymentGatewayConstants.BILLING_FIRST_NAME) != null
-                && paramMap.get(SamplePaymentGatewayConstants.BILLING_FIRST_NAME).length > 0) {
-            billingFirstName = paramMap.get(SamplePaymentGatewayConstants.BILLING_FIRST_NAME)[0];
+        String[] billingFirstNameParam = paramMap.get(SamplePaymentGatewayConstants.BILLING_FIRST_NAME);
+        if (billingFirstNameParam != null && billingFirstNameParam.length > 0) {
+            billingFirstName = StringUtil.sanitize(billingFirstNameParam[0]);
         }
 
-        if (paramMap.get(SamplePaymentGatewayConstants.BILLING_LAST_NAME) != null
-                && paramMap.get(SamplePaymentGatewayConstants.BILLING_LAST_NAME).length > 0) {
-            billingLastName = paramMap.get(SamplePaymentGatewayConstants.BILLING_LAST_NAME)[0];
+        String[] billingLastNameParam = paramMap.get(SamplePaymentGatewayConstants.BILLING_LAST_NAME);
+        if (billingLastNameParam != null && billingLastNameParam.length > 0) {
+            billingLastName = StringUtil.sanitize(billingLastNameParam[0]);
         }
 
-        if (paramMap.get(SamplePaymentGatewayConstants.BILLING_ADDRESS_LINE1) != null
-                && paramMap.get(SamplePaymentGatewayConstants.BILLING_ADDRESS_LINE1).length > 0) {
-            billingAddressLine1 = paramMap.get(SamplePaymentGatewayConstants.BILLING_ADDRESS_LINE1)[0];
+        String[] billingAddressLine1Param = paramMap.get(SamplePaymentGatewayConstants.BILLING_ADDRESS_LINE1);
+        if (billingAddressLine1Param != null && billingAddressLine1Param.length > 0) {
+            billingAddressLine1 = StringUtil.sanitize(billingAddressLine1Param[0]);
         }
 
-        if (paramMap.get(SamplePaymentGatewayConstants.BILLING_ADDRESS_LINE2) != null
-                && paramMap.get(SamplePaymentGatewayConstants.BILLING_ADDRESS_LINE2).length > 0) {
-            billingAddressLine2 = paramMap.get(SamplePaymentGatewayConstants.BILLING_ADDRESS_LINE2)[0];
+        String[] billingAddressLine2Param = paramMap.get(SamplePaymentGatewayConstants.BILLING_ADDRESS_LINE2);
+        if (billingAddressLine2Param != null && billingAddressLine2Param.length > 0) {
+            billingAddressLine2 = StringUtil.sanitize(billingAddressLine2Param[0]);
         }
 
-        if (paramMap.get(SamplePaymentGatewayConstants.BILLING_CITY) != null
-                && paramMap.get(SamplePaymentGatewayConstants.BILLING_CITY).length > 0) {
-            billingCity = paramMap.get(SamplePaymentGatewayConstants.BILLING_CITY)[0];
+        String[] billingCityParam = paramMap.get(SamplePaymentGatewayConstants.BILLING_CITY);
+        if (billingCityParam != null && billingCityParam.length > 0) {
+            billingCity = StringUtil.sanitize(billingCityParam[0]);
         }
 
-        if (paramMap.get(SamplePaymentGatewayConstants.BILLING_STATE) != null
-                && paramMap.get(SamplePaymentGatewayConstants.BILLING_STATE).length > 0) {
-            billingState = paramMap.get(SamplePaymentGatewayConstants.BILLING_STATE)[0];
+        String[] billingStateParam = paramMap.get(SamplePaymentGatewayConstants.BILLING_STATE);
+        if (billingStateParam != null && billingStateParam.length > 0) {
+            billingState = StringUtil.sanitize(billingStateParam[0]);
         }
 
-        if (paramMap.get(SamplePaymentGatewayConstants.BILLING_ZIP) != null
-                && paramMap.get(SamplePaymentGatewayConstants.BILLING_ZIP).length > 0) {
-            billingZip = paramMap.get(SamplePaymentGatewayConstants.BILLING_ZIP)[0];
+        String[] billingZipParam = paramMap.get(SamplePaymentGatewayConstants.BILLING_ZIP);
+        if (billingZipParam != null && billingZipParam.length > 0) {
+            billingZip = StringUtil.sanitize(billingZipParam[0]);
         }
 
-        if (paramMap.get(SamplePaymentGatewayConstants.BILLING_COUNTRY) != null
-                && paramMap.get(SamplePaymentGatewayConstants.BILLING_COUNTRY).length > 0) {
-            billingCountry = paramMap.get(SamplePaymentGatewayConstants.BILLING_COUNTRY)[0];
+        String[] billingCountryParam = paramMap.get(SamplePaymentGatewayConstants.BILLING_COUNTRY);
+        if (billingCountryParam != null && billingCountryParam.length > 0) {
+            billingCountry = StringUtil.sanitize(billingCountryParam[0]);
         }
 
-        if (paramMap.get(SamplePaymentGatewayConstants.SHIPPING_FIRST_NAME) != null
-                && paramMap.get(SamplePaymentGatewayConstants.SHIPPING_FIRST_NAME).length > 0) {
-            shippingFirstName = paramMap.get(SamplePaymentGatewayConstants.SHIPPING_FIRST_NAME)[0];
+        String[] shippingFirstNameParam = paramMap.get(SamplePaymentGatewayConstants.SHIPPING_FIRST_NAME);
+        if (shippingFirstNameParam != null && shippingFirstNameParam.length > 0) {
+            shippingFirstName = StringUtil.sanitize(shippingFirstNameParam[0]);
         }
 
-        if (paramMap.get(SamplePaymentGatewayConstants.SHIPPING_LAST_NAME) != null
-                && paramMap.get(SamplePaymentGatewayConstants.SHIPPING_LAST_NAME).length > 0) {
-            shippingLastName = paramMap.get(SamplePaymentGatewayConstants.SHIPPING_LAST_NAME)[0];
+        String[] shippingLastNameParam = paramMap.get(SamplePaymentGatewayConstants.SHIPPING_LAST_NAME);
+        if (shippingLastNameParam != null && shippingLastNameParam.length > 0) {
+            shippingLastName = StringUtil.sanitize(shippingLastNameParam[0]);
         }
 
-        if (paramMap.get(SamplePaymentGatewayConstants.SHIPPING_ADDRESS_LINE1) != null
-                && paramMap.get(SamplePaymentGatewayConstants.SHIPPING_ADDRESS_LINE1).length > 0) {
-            shippingAddressLine1 = paramMap.get(SamplePaymentGatewayConstants.SHIPPING_ADDRESS_LINE1)[0];
+        String[] shippingAddressLine1Param = paramMap.get(SamplePaymentGatewayConstants.SHIPPING_ADDRESS_LINE1);
+        if (shippingAddressLine1Param != null && shippingAddressLine1Param.length > 0) {
+            shippingAddressLine1 = StringUtil.sanitize(shippingAddressLine1Param[0]);
         }
 
-        if (paramMap.get(SamplePaymentGatewayConstants.SHIPPING_ADDRESS_LINE2) != null
-                && paramMap.get(SamplePaymentGatewayConstants.SHIPPING_ADDRESS_LINE2).length > 0) {
-            shippingAddressLine2 = paramMap.get(SamplePaymentGatewayConstants.SHIPPING_ADDRESS_LINE2)[0];
+        String[] shippingAddressLine2Param = paramMap.get(SamplePaymentGatewayConstants.SHIPPING_ADDRESS_LINE2);
+        if (shippingAddressLine2Param != null && shippingAddressLine2Param.length > 0) {
+            shippingAddressLine2 = StringUtil.sanitize(shippingAddressLine2Param[0]);
         }
 
-        if (paramMap.get(SamplePaymentGatewayConstants.SHIPPING_CITY) != null
-                && paramMap.get(SamplePaymentGatewayConstants.SHIPPING_CITY).length > 0) {
-            shippingCity = paramMap.get(SamplePaymentGatewayConstants.SHIPPING_CITY)[0];
+        String[] shippingCityParam = paramMap.get(SamplePaymentGatewayConstants.SHIPPING_CITY);
+        if (shippingCityParam != null && shippingCityParam.length > 0) {
+            shippingCity = StringUtil.sanitize(shippingCityParam[0]);
         }
 
-        if (paramMap.get(SamplePaymentGatewayConstants.SHIPPING_STATE) != null
-                && paramMap.get(SamplePaymentGatewayConstants.SHIPPING_STATE).length > 0) {
-            shippingState = paramMap.get(SamplePaymentGatewayConstants.SHIPPING_STATE)[0];
+        String[] shippingStateParam = paramMap.get(SamplePaymentGatewayConstants.SHIPPING_STATE);
+        if (shippingStateParam != null && shippingStateParam.length > 0) {
+            shippingState = StringUtil.sanitize(shippingStateParam[0]);
         }
 
-        if (paramMap.get(SamplePaymentGatewayConstants.SHIPPING_ZIP) != null
-                && paramMap.get(SamplePaymentGatewayConstants.SHIPPING_ZIP).length > 0) {
-            shippingZip = paramMap.get(SamplePaymentGatewayConstants.SHIPPING_ZIP)[0];
+        String[] shippingZipParam = paramMap.get(SamplePaymentGatewayConstants.SHIPPING_ZIP);
+        if (shippingZipParam != null && shippingZipParam.length > 0) {
+            shippingZip = StringUtil.sanitize(shippingZipParam[0]);
         }
 
-        if (paramMap.get(SamplePaymentGatewayConstants.SHIPPING_COUNTRY) != null
-                && paramMap.get(SamplePaymentGatewayConstants.SHIPPING_COUNTRY).length > 0) {
-            shippingCountry = paramMap.get(SamplePaymentGatewayConstants.SHIPPING_COUNTRY)[0];
+        String[] shippingCountryParam = paramMap.get(SamplePaymentGatewayConstants.SHIPPING_COUNTRY);
+        if (shippingCountryParam != null && shippingCountryParam.length > 0) {
+            shippingCountry = StringUtil.sanitize(shippingCountryParam[0]);
         }
 
-        if (paramMap.get(SamplePaymentGatewayConstants.CREDIT_CARD_NAME) != null
-                && paramMap.get(SamplePaymentGatewayConstants.CREDIT_CARD_NAME).length > 0) {
-            creditCardName = paramMap.get(SamplePaymentGatewayConstants.CREDIT_CARD_NAME)[0];
+        String[] creditCardNameParam = paramMap.get(SamplePaymentGatewayConstants.CREDIT_CARD_NAME);
+        if (creditCardNameParam != null && creditCardNameParam.length > 0) {
+            creditCardName = StringUtil.sanitize(creditCardNameParam[0]);
         }
 
-        if (paramMap.get(SamplePaymentGatewayConstants.CREDIT_CARD_NUMBER) != null
-                && paramMap.get(SamplePaymentGatewayConstants.CREDIT_CARD_NUMBER).length > 0) {
-            creditCardNumber = paramMap.get(SamplePaymentGatewayConstants.CREDIT_CARD_NUMBER)[0];
+        String[] creditCardNumberParam = paramMap.get(SamplePaymentGatewayConstants.CREDIT_CARD_NUMBER);
+        if (creditCardNumberParam != null && creditCardNumberParam.length > 0) {
+            creditCardNumber = StringUtil.sanitize(creditCardNumberParam[0]);
         }
 
-        if (paramMap.get(SamplePaymentGatewayConstants.CREDIT_CARD_EXP_DATE) != null
-                && paramMap.get(SamplePaymentGatewayConstants.CREDIT_CARD_EXP_DATE).length > 0) {
-            creditCardExpDate = paramMap.get(SamplePaymentGatewayConstants.CREDIT_CARD_EXP_DATE)[0];
+        String[] creditCardExpDateParam = paramMap.get(SamplePaymentGatewayConstants.CREDIT_CARD_EXP_DATE);
+        if (creditCardExpDateParam != null && creditCardExpDateParam.length > 0) {
+            creditCardExpDate = creditCardExpDateParam[0];
         }
 
-        if (paramMap.get(SamplePaymentGatewayConstants.CREDIT_CARD_CVV) != null
-                && paramMap.get(SamplePaymentGatewayConstants.CREDIT_CARD_CVV).length > 0) {
-            creditCardCVV = paramMap.get(SamplePaymentGatewayConstants.CREDIT_CARD_CVV)[0];
+        String[] creditCardCvvParam = paramMap.get(SamplePaymentGatewayConstants.CREDIT_CARD_CVV);
+        if (creditCardCvvParam != null && creditCardCvvParam.length > 0) {
+            creditCardCVV = StringUtil.sanitize(creditCardCvvParam[0]);
         }
 
         CreditCardValidator visaValidator = new CreditCardValidator(CreditCardValidator.VISA);
@@ -228,8 +229,8 @@ public class SampleMockProcessorController {
             boolean validDate = false;
             String[] parsedDate = creditCardExpDate.split("/");
             if (parsedDate.length == 2) {
-                String expMonth = parsedDate[0];
-                String expYear = parsedDate[1];
+                String expMonth = StringUtil.sanitize(parsedDate[0]);
+                String expYear = StringUtil.sanitize(parsedDate[1]);
                 try {
                     DateTime expirationDate = new DateTime(Integer.parseInt("20"+expYear), Integer.parseInt(expMonth), 1, 0, 0);
                     expirationDate = expirationDate.dayOfMonth().withMaximumValue();
