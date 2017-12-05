@@ -22,6 +22,7 @@ package org.broadleafcommerce.payment.service.gateway;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.validator.CreditCardValidator;
 import org.broadleafcommerce.common.money.Money;
+import org.broadleafcommerce.common.payment.CreditCardType;
 import org.broadleafcommerce.common.payment.PaymentAdditionalFieldType;
 import org.broadleafcommerce.common.payment.PaymentGatewayRequestType;
 import org.broadleafcommerce.common.payment.PaymentTransactionType;
@@ -37,6 +38,9 @@ import org.broadleafcommerce.vendor.sample.service.payment.SamplePaymentGatewayC
 import org.broadleafcommerce.vendor.sample.service.payment.SamplePaymentGatewayType;
 import org.joda.time.DateTime;
 import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -136,7 +140,8 @@ public class SamplePaymentGatewayTransactionServiceImpl extends AbstractPaymentG
      * Does minimal Credit Card Validation (luhn check and expiration date is after today).
      * Mimics the Response of a real Payment Gateway.
      *
-     * @param creditCardDTO
+     * @param requestDTO
+     * @param paymentTransactionType
      * @return
      */
     protected PaymentResponseDTO commonCreditCardProcessing(PaymentRequestDTO requestDTO, PaymentTransactionType paymentTransactionType) {
@@ -210,6 +215,8 @@ public class SamplePaymentGatewayTransactionServiceImpl extends AbstractPaymentG
                         .rawResponse("cart.payment.card.invalid")
                         .successful(false);
             } else {
+                populateResponseDTO(responseDTO, requestDTO);
+
                 responseDTO.amount(new Money(requestDTO.getTransactionTotal()))
                         .rawResponse("Success!")
                         .successful(true);
@@ -229,12 +236,28 @@ public class SamplePaymentGatewayTransactionServiceImpl extends AbstractPaymentG
         if (nonce != null) {
             String[] fields = nonce.split("\\|");
 
+            String lastFour = (fields[0] == null) ? null : fields[0].substring(fields[0].length() - 4);
+
             requestDTO.creditCard()
+                    .creditCardType(CreditCardType.MASTERCARD.getType())
                     .creditCardNum(fields[0])
+                    .creditCardLastFour(lastFour)
                     .creditCardHolderName(fields[1])
                     .creditCardExpDate(fields[2])
                     .creditCardCvv(fields[3]);
         }
+    }
+
+    protected void populateResponseDTO(PaymentResponseDTO responseDTO, PaymentRequestDTO requestDTO) {
+        Map<String, String> additionalResponseItems = new HashMap<>();
+
+        CreditCardDTO<PaymentRequestDTO> creditCardDTO = requestDTO.getCreditCard();
+        additionalResponseItems.put(PaymentAdditionalFieldType.CARD_TYPE.getType(), creditCardDTO.getCreditCardType());
+        additionalResponseItems.put(PaymentAdditionalFieldType.NAME_ON_CARD.getType(), creditCardDTO.getCreditCardHolderName());
+        additionalResponseItems.put(PaymentAdditionalFieldType.LAST_FOUR.getType(), creditCardDTO.getCreditCardLastFour());
+        additionalResponseItems.put(PaymentAdditionalFieldType.EXP_DATE.getType(), creditCardDTO.getCreditCardExpDate());
+
+        responseDTO.getResponseMap().putAll(additionalResponseItems);
     }
 
     @Override

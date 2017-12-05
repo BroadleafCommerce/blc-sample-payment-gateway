@@ -64,7 +64,7 @@ public class SamplePaymentGatewayHostedActionProcessor extends AbstractBroadleaf
 
     @Override
     public String getName() {
-        return "sample_payment_hosted_action-size-link";
+        return "sample_payment_hosted_action";
     }
     
     @Override
