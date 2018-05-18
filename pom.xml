@@ -10,7 +10,7 @@
     <artifactId>broadleaf-sample-payment-gateway</artifactId>
     <name>BroadleafCommerce Sample Payment Gateway</name>
     <description>BroadleafCommerce Sample Payment Gateway</description>
-    <version>2.2.1-SNAPSHOT</version>
+    <version>3.0.0-SNAPSHOT</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <blc.version>5.1.0-GA</blc.version>
