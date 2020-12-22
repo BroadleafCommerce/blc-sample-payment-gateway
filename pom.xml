@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.broadleafcommerce</groupId>
         <artifactId>broadleaf-module-parent</artifactId>
-        <version>3.0.3-GA</version>
+        <version>3.0.5-GA</version>
     </parent>
 
     <artifactId>broadleaf-sample-payment-gateway</artifactId>
