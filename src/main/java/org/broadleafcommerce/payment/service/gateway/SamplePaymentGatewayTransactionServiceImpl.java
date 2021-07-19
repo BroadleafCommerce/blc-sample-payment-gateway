@@ -234,7 +234,7 @@ public class SamplePaymentGatewayTransactionServiceImpl extends AbstractPaymentG
     protected void setupNoncePaymentRequest(PaymentRequestDTO requestDTO) {
         String nonce = (String) requestDTO.getAdditionalFields().get(SamplePaymentGatewayConstants.PAYMENT_METHOD_NONCE);
         if (nonce != null) {
-            String[] fields = nonce.split("\\|");
+            String[] fields = nonce.split("#");
 
             String lastFour = (fields[0] == null) ? null : fields[0].substring(fields[0].length() - 4);
 
