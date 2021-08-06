@@ -4,16 +4,18 @@
     <parent>
         <groupId>org.broadleafcommerce</groupId>
         <artifactId>broadleaf-module-parent</artifactId>
-        <version>3.3.0-SNAPSHOT</version>
+        <version>3.3.0-GA</version>
     </parent>
 
-    <artifactId>broadleaf-sample-payment-gateway</artifactId>
     <name>BroadleafCommerce Sample Payment Gateway</name>
     <description>BroadleafCommerce Sample Payment Gateway</description>
+    <groupId>org.broadleafcommerce</groupId>
+    <artifactId>broadleaf-sample-payment-gateway</artifactId>
     <version>3.3.0-SNAPSHOT</version>
+    
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <blc.version>6.2.0-SNAPSHOT</blc.version>
+        <blc.version>6.2.0-GA</blc.version>
         <project.uri>${user.dir}</project.uri>
     </properties>
     <scm>
