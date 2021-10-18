@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <groupId>org.broadleafcommerce</groupId>
         <artifactId>broadleaf-module-parent</artifactId>
-        <version>3.3.0-GA</version>
+        <version>3.3.1-SNAPSHOT</version>
     </parent>
 
     <name>BroadleafCommerce Sample Payment Gateway</name>
@@ -13,12 +14,12 @@
     <artifactId>broadleaf-sample-payment-gateway</artifactId>
     <version>3.3.1-SNAPSHOT</version>
     <url>https://www.broadleafcommerce.com/</url>
-    
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <blc.version>6.2.0-GA</blc.version>
         <project.uri>${user.dir}</project.uri>
-        
+
     </properties>
     <scm>
         <connection>scm:git:git@github.com:BroadleafCommerce/blc-sample-payment-gateway.git</connection>
@@ -26,7 +27,6 @@
         <url>https://github.com/BroadleafCommerce/BroadleafCommerce</url>
       <tag>HEAD</tag>
   </scm>
-
 
     <licenses>
         <license>
@@ -44,10 +44,11 @@
     </licenses>
     <developers>
         <developer>
-            <id>architect</id>
-            <email>architect@broadleafcommerce.org</email>
+            <id>blcteam</id>
+            <name>Broadleaf Commerce Team</name>
+            <email>info@broadleafcommerce.com</email>
             <organization>Broadleaf Commerce</organization>
-            <organizationUrl>http://www.broadleafcommerce.org</organizationUrl>
+            <organizationUrl>https://www.broadleafcommerce.com</organizationUrl>
             <timezone>-6</timezone>
         </developer>
     </developers>
@@ -55,12 +56,12 @@
         <repository>
             <id>releases</id>
             <name>public releases</name>
-            <url>http://nexus.broadleafcommerce.org/nexus/content/groups/community-releases/</url>
+            <url>https://nexus2.broadleafcommerce.org/nexus/content/groups/community-releases/</url>
         </repository>
         <repository>
             <id>snapshots</id>
             <name>public snapshots</name>
-            <url>http://nexus.broadleafcommerce.org/nexus/content/groups/community-snapshots/</url>
+            <url>https://nexus2.broadleafcommerce.org/nexus/content/groups/community-snapshots/</url>
         </repository>
     </repositories>
     <build>
@@ -77,11 +78,11 @@
     <distributionManagement>
         <snapshotRepository>
             <id>snapshots</id>
-            <url>http://nexus.broadleafcommerce.org/nexus/content/repositories/snapshots/</url>
+            <url>https://nexus2.broadleafcommerce.org/nexus/content/repositories/snapshots/</url>
         </snapshotRepository>
         <repository>
             <id>releases</id>
-            <url>http://nexus.broadleafcommerce.org/nexus/content/repositories/releases/</url>
+            <url>https://nexus2.broadleafcommerce.org/nexus/content/repositories/releases/</url>
         </repository>
     </distributionManagement>
     <dependencies>
