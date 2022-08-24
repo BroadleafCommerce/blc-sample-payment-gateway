@@ -12,7 +12,7 @@
     <description>BroadleafCommerce Sample Payment Gateway</description>
     <groupId>org.broadleafcommerce</groupId>
     <artifactId>broadleaf-sample-payment-gateway</artifactId>
-    <version>3.0.4-SNAPSHOT</version>
+    <version>3.0.4-GA</version>
     <url>https://www.broadleafcommerce.com</url>
 
     <properties>
@@ -24,7 +24,7 @@
         <connection>scm:git:git@github.com:BroadleafCommerce/blc-sample-payment-gateway.git</connection>
         <developerConnection>scm:git:git@github.com:BroadleafCommerce/blc-sample-payment-gateway.git</developerConnection>
         <url>https://github.com/BroadleafCommerce/BroadleafCommerce</url>
-        <tag>HEAD</tag>
+        <tag>broadleaf-sample-payment-gateway-3.0.4-GA</tag>
     </scm>
     <licenses>
         <license>
