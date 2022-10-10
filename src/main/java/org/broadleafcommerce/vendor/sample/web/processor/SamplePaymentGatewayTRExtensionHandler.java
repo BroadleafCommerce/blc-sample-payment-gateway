@@ -1,8 +1,8 @@
-/*
+/*-
  * #%L
- * BroadleafCommerce Framework Web
+ * BroadleafCommerce Sample Payment Gateway
  * %%
- * Copyright (C) 2009 - 2013 Broadleaf Commerce
+ * Copyright (C) 2009 - 2022 Broadleaf Commerce
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
