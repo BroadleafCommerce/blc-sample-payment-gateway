@@ -17,7 +17,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <blc.version>6.2.0-GA</blc.version>
+        <blc.version>6.2.4-SNAPSHOT</blc.version>
         <project.uri>${user.dir}</project.uri>
 
     </properties>
@@ -104,12 +104,5 @@
             <scope>provided</scope>
         </dependency>
         <!-- Other -->
-        <dependency>
-            <groupId>joda-time</groupId>
-            <artifactId>joda-time</artifactId>
-            <version>2.9.9</version>
-            <type>jar</type>
-            <scope>compile</scope>
-        </dependency>
     </dependencies>
 </project>
