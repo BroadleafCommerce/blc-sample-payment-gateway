@@ -25,12 +25,14 @@ import org.apache.commons.validator.CreditCardValidator;
 import org.broadleafcommerce.common.util.StringUtil;
 import org.broadleafcommerce.payment.service.gateway.SamplePaymentGatewayConfiguration;
 import org.broadleafcommerce.vendor.sample.service.payment.SamplePaymentGatewayConstants;
-import org.joda.time.DateTime;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.Map;
 import java.util.UUID;
 
@@ -231,10 +233,11 @@ public class SampleMockProcessorController {
             if (parsedDate.length == 2) {
                 String expMonth = StringUtil.sanitize(parsedDate[0]);
                 String expYear = StringUtil.sanitize(parsedDate[1]);
+                ZoneId zone = ZoneId.systemDefault();
                 try {
-                    DateTime expirationDate = new DateTime(Integer.parseInt("20"+expYear), Integer.parseInt(expMonth), 1, 0, 0);
-                    expirationDate = expirationDate.dayOfMonth().withMaximumValue();
-                    validDate = expirationDate.isAfterNow();
+                    ZonedDateTime expirationDate = ZonedDateTime.of((java.lang.Integer.parseInt(expYear)), Integer.parseInt(expMonth), 1, 0, 0, 0, 0, zone);
+                    LocalDateTime expDate = expirationDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+                    validDate = expDate.isAfter(LocalDateTime.now());
                     validDateFormat = true;
                 } catch (Exception e) {
                     //invalid date format
