@@ -237,7 +237,7 @@ public class SampleMockCustomerPaymentProcessorController {
                 ZoneId zone = ZoneId.systemDefault();
                 try {
                     ZonedDateTime expirationDate = ZonedDateTime.of((java.lang.Integer.parseInt(expYear)), Integer.parseInt(expMonth), 1, 0, 0, 0, 0, zone);
-                    LocalDateTime expDate = expirationDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+                    LocalDateTime expDate = expirationDate.toInstant().atZone(zone).toLocalDateTime();
                     validDate = expDate.isAfter(LocalDateTime.now());
                     validDateFormat = true;
                 } catch (Exception e) {
