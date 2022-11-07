@@ -16,10 +16,9 @@
     <url>https://www.broadleafcommerce.com/</url>
 
     <properties>
+        <project.uri>${user.dir}</project.uri>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <blc.version>6.3.0-SNAPSHOT</blc.version>
-        <project.uri>${user.dir}</project.uri>
-
     </properties>
     <scm>
         <connection>scm:git:git@github.com:BroadleafCommerce/blc-sample-payment-gateway.git</connection>
@@ -104,12 +103,5 @@
             <scope>provided</scope>
         </dependency>
         <!-- Other -->
-        <dependency>
-            <groupId>joda-time</groupId>
-            <artifactId>joda-time</artifactId>
-            <version>2.9.9</version>
-            <type>jar</type>
-            <scope>compile</scope>
-        </dependency>
     </dependencies>
 </project>

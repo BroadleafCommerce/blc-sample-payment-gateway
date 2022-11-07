@@ -1,8 +1,8 @@
-/*
+/*-
  * #%L
  * BroadleafCommerce Sample Payment Gateway
  * %%
- * Copyright (C) 2009 - 2015 Broadleaf Commerce
+ * Copyright (C) 2009 - 2022 Broadleaf Commerce
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,9 +36,11 @@ import org.broadleafcommerce.common.vendor.service.exception.PaymentException;
 import org.broadleafcommerce.common.vendor.service.type.ServiceStatusType;
 import org.broadleafcommerce.vendor.sample.service.payment.SamplePaymentGatewayConstants;
 import org.broadleafcommerce.vendor.sample.service.payment.SamplePaymentGatewayType;
-import org.joda.time.DateTime;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -196,10 +198,11 @@ public class SamplePaymentGatewayTransactionServiceImpl extends AbstractPaymentG
             if (parsedDate.length == 2) {
                 String expMonth = parsedDate[0];
                 String expYear = parsedDate[1];
+                ZoneId zone = ZoneId.systemDefault();
                 try {
-                    DateTime expirationDate = new DateTime(Integer.parseInt("20"+expYear), Integer.parseInt(expMonth), 1, 0, 0);
-                    expirationDate = expirationDate.dayOfMonth().withMaximumValue();
-                    validDate = expirationDate.isAfterNow();
+                    ZonedDateTime expirationDate = ZonedDateTime.of((java.lang.Integer.parseInt(expYear)), Integer.parseInt(expMonth), 1, 0, 0, 0, 0, zone);
+                    LocalDateTime expDate = expirationDate.toInstant().atZone(zone).toLocalDateTime();
+                    validDate = expDate.isAfter(LocalDateTime.now());
                     validDateFormat = true;
                 } catch (Exception e) {
                     //invalid date format
