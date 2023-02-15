@@ -2,7 +2,7 @@
  * #%L
  * BroadleafCommerce Sample Payment Gateway
  * %%
- * Copyright (C) 2009 - 2022 Broadleaf Commerce
+ * Copyright (C) 2009 - 2023 Broadleaf Commerce
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -200,7 +200,7 @@ public class SamplePaymentGatewayTransactionServiceImpl extends AbstractPaymentG
                 String expYear = parsedDate[1];
                 ZoneId zone = ZoneId.systemDefault();
                 try {
-                    ZonedDateTime expirationDate = ZonedDateTime.of((java.lang.Integer.parseInt(expYear)), Integer.parseInt(expMonth), 1, 0, 0, 0, 0, zone);
+                    ZonedDateTime expirationDate = ZonedDateTime.of((Integer.parseInt("20"+expYear)), Integer.parseInt(expMonth), 1, 0, 0, 0, 0, zone);
                     LocalDateTime expDate = expirationDate.toInstant().atZone(zone).toLocalDateTime();
                     validDate = expDate.isAfter(LocalDateTime.now());
                     validDateFormat = true;
