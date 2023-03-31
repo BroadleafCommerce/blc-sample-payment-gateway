@@ -36,8 +36,8 @@ import java.time.ZonedDateTime;
 import java.util.Map;
 import java.util.UUID;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
  * This is a sample implementation of a Payment Gateway Processor.

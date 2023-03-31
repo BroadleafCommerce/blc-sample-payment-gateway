@@ -27,8 +27,8 @@ import org.broadleafcommerce.common.web.payment.expression.PaymentGatewayFieldEx
 import org.broadleafcommerce.vendor.sample.service.payment.SamplePaymentGatewayConstants;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.Resource;
 
 /**
  * This sample handler will add itself to the {@link PaymentGatewayFieldExtensionManager}

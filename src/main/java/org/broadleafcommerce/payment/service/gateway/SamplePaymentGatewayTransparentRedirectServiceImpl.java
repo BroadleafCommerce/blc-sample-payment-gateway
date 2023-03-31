@@ -34,7 +34,7 @@ import org.broadleafcommerce.vendor.sample.service.payment.SamplePaymentGatewayT
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 /**
  * This is an example implementation of a {@link PaymentGatewayTransparentRedirectService}.
