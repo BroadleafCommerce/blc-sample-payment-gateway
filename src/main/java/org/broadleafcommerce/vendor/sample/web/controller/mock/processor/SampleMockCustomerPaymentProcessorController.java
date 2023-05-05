@@ -19,7 +19,7 @@
  */
 package org.broadleafcommerce.vendor.sample.web.controller.mock.processor;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.validator.CreditCardValidator;
 import org.broadleafcommerce.common.util.StringUtil;
 import org.broadleafcommerce.vendor.sample.service.payment.SamplePaymentGatewayConstants;
