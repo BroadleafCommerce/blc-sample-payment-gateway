@@ -25,15 +25,15 @@ import org.broadleafcommerce.common.payment.PaymentType;
 import org.broadleafcommerce.common.payment.dto.PaymentResponseDTO;
 import org.broadleafcommerce.common.payment.service.AbstractPaymentGatewayWebResponseService;
 import org.broadleafcommerce.common.payment.service.PaymentGatewayWebResponsePrintService;
-import org.broadleafcommerce.common.payment.service.PaymentGatewayWebResponseService;
 import org.broadleafcommerce.common.vendor.service.exception.PaymentException;
 import org.broadleafcommerce.vendor.sample.service.payment.SamplePaymentGatewayConstants;
 import org.broadleafcommerce.vendor.sample.service.payment.SamplePaymentGatewayType;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
-import java.util.Map;
 
 /**
  * @author Elbert Bautista (elbertbautista)

@@ -37,7 +37,6 @@ package org.broadleafcommerce.payment.service.gateway;
 
 import org.broadleafcommerce.common.payment.service.AbstractPaymentGatewayConfigurationService;
 import org.broadleafcommerce.common.payment.service.PaymentGatewayConfiguration;
-import org.broadleafcommerce.common.payment.service.PaymentGatewayConfigurationService;
 import org.broadleafcommerce.common.payment.service.PaymentGatewayCreditCardService;
 import org.broadleafcommerce.common.payment.service.PaymentGatewayCustomerService;
 import org.broadleafcommerce.common.payment.service.PaymentGatewayFraudService;

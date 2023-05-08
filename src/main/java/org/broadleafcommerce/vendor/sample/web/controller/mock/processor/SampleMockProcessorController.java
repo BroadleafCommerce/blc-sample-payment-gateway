@@ -235,7 +235,7 @@ public class SampleMockProcessorController {
                 String expYear = StringUtil.sanitize(parsedDate[1]);
                 ZoneId zone = ZoneId.systemDefault();
                 try {
-                    ZonedDateTime expirationDate = ZonedDateTime.of((java.lang.Integer.parseInt(expYear)), Integer.parseInt(expMonth), 1, 0, 0, 0, 0, zone);
+                    ZonedDateTime expirationDate = ZonedDateTime.of((Integer.parseInt(expYear)), Integer.parseInt(expMonth), 1, 0, 0, 0, 0, zone);
                     LocalDateTime expDate = expirationDate.toInstant().atZone(zone).toLocalDateTime();
                     validDate = expDate.isAfter(LocalDateTime.now());
                     validDateFormat = true;

@@ -34,9 +34,10 @@ import org.broadleafcommerce.vendor.sample.service.payment.SamplePaymentGatewayC
 import org.broadleafcommerce.vendor.sample.service.payment.SamplePaymentGatewayType;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
-import java.util.Map;
 
 /**
  * This is an example implementation of a {@link PaymentGatewayWebResponseService}.

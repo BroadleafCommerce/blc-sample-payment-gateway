@@ -22,7 +22,6 @@ package org.broadleafcommerce.payment.service.gateway;
 
 import org.broadleafcommerce.common.payment.PaymentGatewayRequestType;
 import org.broadleafcommerce.common.payment.PaymentType;
-import org.broadleafcommerce.common.payment.TransparentRedirectConstants;
 import org.broadleafcommerce.common.payment.dto.AddressDTO;
 import org.broadleafcommerce.common.payment.dto.PaymentRequestDTO;
 import org.broadleafcommerce.common.payment.dto.PaymentResponseDTO;
