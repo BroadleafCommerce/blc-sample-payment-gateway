@@ -34,8 +34,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Map;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletRequest;
 
 @Controller("blSamplePaymentGatewayCustomerPaymentOMSController")
 @RequestMapping("/" + SamplePaymentGatewayCustomerPaymentOMSController.GATEWAY_CONTEXT_KEY)

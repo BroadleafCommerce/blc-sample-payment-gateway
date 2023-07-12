@@ -20,7 +20,7 @@
 
 package org.broadleafcommerce.vendor.sample.web.controller.mock.processor;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.validator.CreditCardValidator;
 import org.broadleafcommerce.common.util.StringUtil;
 import org.broadleafcommerce.payment.service.gateway.SamplePaymentGatewayConfiguration;
@@ -36,8 +36,8 @@ import java.time.ZonedDateTime;
 import java.util.Map;
 import java.util.UUID;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
  * This is a sample implementation of a Payment Gateway Processor.
@@ -235,7 +235,7 @@ public class SampleMockProcessorController {
                 String expYear = StringUtil.sanitize(parsedDate[1]);
                 ZoneId zone = ZoneId.systemDefault();
                 try {
-                    ZonedDateTime expirationDate = ZonedDateTime.of((java.lang.Integer.parseInt(expYear)), Integer.parseInt(expMonth), 1, 0, 0, 0, 0, zone);
+                    ZonedDateTime expirationDate = ZonedDateTime.of((Integer.parseInt(expYear)), Integer.parseInt(expMonth), 1, 0, 0, 0, 0, zone);
                     LocalDateTime expDate = expirationDate.toInstant().atZone(zone).toLocalDateTime();
                     validDate = expDate.isAfter(LocalDateTime.now());
                     validDateFormat = true;

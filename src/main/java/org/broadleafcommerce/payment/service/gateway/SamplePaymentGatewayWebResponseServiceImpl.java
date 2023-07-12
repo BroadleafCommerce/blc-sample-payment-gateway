@@ -20,7 +20,7 @@
 
 package org.broadleafcommerce.payment.service.gateway;
 
-import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang3.ArrayUtils;
 import org.broadleafcommerce.common.money.Money;
 import org.broadleafcommerce.common.payment.PaymentAdditionalFieldType;
 import org.broadleafcommerce.common.payment.PaymentTransactionType;
@@ -34,9 +34,10 @@ import org.broadleafcommerce.vendor.sample.service.payment.SamplePaymentGatewayC
 import org.broadleafcommerce.vendor.sample.service.payment.SamplePaymentGatewayType;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
+
+import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
  * This is an example implementation of a {@link PaymentGatewayWebResponseService}.

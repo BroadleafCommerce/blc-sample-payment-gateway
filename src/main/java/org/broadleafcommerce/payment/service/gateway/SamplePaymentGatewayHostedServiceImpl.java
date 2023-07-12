@@ -29,7 +29,7 @@ import org.broadleafcommerce.vendor.sample.service.payment.SamplePaymentGatewayC
 import org.broadleafcommerce.vendor.sample.service.payment.SamplePaymentGatewayType;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 /**
  * This is an example implementation of a {@link PaymentGatewayHostedService}.

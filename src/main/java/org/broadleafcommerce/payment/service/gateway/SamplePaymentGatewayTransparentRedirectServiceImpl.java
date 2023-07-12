@@ -22,7 +22,6 @@ package org.broadleafcommerce.payment.service.gateway;
 
 import org.broadleafcommerce.common.payment.PaymentGatewayRequestType;
 import org.broadleafcommerce.common.payment.PaymentType;
-import org.broadleafcommerce.common.payment.TransparentRedirectConstants;
 import org.broadleafcommerce.common.payment.dto.AddressDTO;
 import org.broadleafcommerce.common.payment.dto.PaymentRequestDTO;
 import org.broadleafcommerce.common.payment.dto.PaymentResponseDTO;
@@ -34,7 +33,7 @@ import org.broadleafcommerce.vendor.sample.service.payment.SamplePaymentGatewayT
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 /**
  * This is an example implementation of a {@link PaymentGatewayTransparentRedirectService}.

@@ -29,8 +29,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Map;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
  * This is a sample implementation of a Hosted Payment Gateway Processor.
