@@ -62,7 +62,7 @@ public class PaymentTransactionType extends org.broadleafcommerce.common.payment
         return friendlyType;
     }
 
-    private void setType(final String type) {
+    protected void setType(final String type) {
         this.type = type;
         if (!TYPES.containsKey(type)) {
             TYPES.put(type, this);
