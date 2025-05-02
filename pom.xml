@@ -18,7 +18,7 @@
     <properties>
         <project.uri>${user.dir}</project.uri>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <blc.version>6.2.13-SNAPSHOT</blc.version>
+        <blc.version>6.2.13-GA</blc.version>
     </properties>
     <scm>
         <connection>scm:git:git@github.com:BroadleafCommerce/blc-sample-payment-gateway.git</connection>
